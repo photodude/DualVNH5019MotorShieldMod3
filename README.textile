@@ -1,7 +1,7 @@
-h1. Arduino library for the Pololu Dual VNH5019 Motor Driver Shield
+h1. Arduino library for the running two Pololu Dual VNH5019 Motor Driver Shields on a Mega
 
-Version: 1.2.3
-Release Date: 2014-03-24
+Version: 1.2.3.dualsheilds
+Release Date: 2015-02-22
 "www.pololu.com":http://www.pololu.com/
 
 h2. Summary
@@ -50,6 +50,7 @@ h2. Library Reference
 
 h2. Version History
 
+* 1.2.3.dualshields (2015-02-22): Custom library for running two DualVNH5019MotorShields on a Mega (4 motors total).
 * 1.2.3 (2014-03-24): Added 20 kHz PWM support for ATmega32U4. Thanks blacksound.
 * 1.2.2 (2014-03-18): Add keywords.txt file. Thanks eatonphil.
 * 1.2.1 (2013-01-06): Fixed a bug in setM2Speed that was introduced in 1.2.0.
