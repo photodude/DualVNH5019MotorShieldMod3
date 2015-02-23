@@ -344,7 +344,7 @@ void DualVNH5019MotorShieldMod3::setM4Brake(int brake)
 }
 
 // Brake motor 1, 2, 3, and 4, brake is a number between 0 and 400
-void DualVNH5019MotorShieldMod3::setBrakes(int m1Brake, int m2Brake, int m4Brake, int m3Brake)
+void DualVNH5019MotorShieldMod3::setBrakes(int m1Brake, int m2Brake, int m3Brake, int m4Brake)
 {
   setM1Brake(m1Brake);
   setM2Brake(m2Brake);
