@@ -6,7 +6,7 @@ Release Date: 2015-02-22
 
 h2. Summary
 
-This is a library for the "Arduino":http://www.pololu.com/catalog/product/2191 that interfaces with the Pololu "Dual VNH5019 Motor Driver Shield":http://www.pololu.com/catalog/product/2507. It makes it simple to drive two brushed, DC motors.
+This is a custom library for the "Arduino":http://www.pololu.com/catalog/product/2191 that interfaces with two Pololu "Dual VNH5019 Motor Driver Shields":http://www.pololu.com/catalog/product/2507. It makes it simple to drive four brushed, DC motors from 2 sheilds.
 
 h2. Getting Started
 
@@ -28,25 +28,44 @@ The demo ramps motor 1 from stopped to full speed forward, ramps down to full sp
 
 h2. Library Reference
 
-- @DualVNH5019MotorShield()@ := Default constructor, selects the default pins as connected by the motor shield.
-- @DualVNH5019MotorShield(unsigned char INA1, unsigned char INB1, unsigned char EN1DIAG1, unsigned char CS1,@
+- @DualVNH5019MotorShieldMod3()@ := Default constructor, selects the default pins as connected by the motor shields.
+- @DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3(unsigned char INA3, unsigned char INB3, unsigned char EN3DIAG3,@
+@unsigned char CS3, unsigned char PWM3, unsigned char INA4, unsigned char INB4, unsigned char EN4DIAG4, unsigned char CS4,@
+@unsigned char PWM4):= Alternate constructor for shield connections remapped by user. default pins for motor shield 1, custom pins for motor shield 2
+- @DualVNH5019MotorShieldMod3(unsigned char INA1, unsigned char INB1, unsigned char EN1DIAG1, unsigned char CS1,@
 @unsigned char INA2, unsigned char INB2, unsigned char EN2DIAG2, unsigned char CS2)@ := Alternate constructor for shield connections remapped by user. PWM1 and PWM2 cannot be remapped because the library assumes PWM is on timer1.
+- @DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3(unsigned char INA1, unsigned char INB1, unsigned char EN1DIAG1,@
+@unsigned char CS1, unsigned char INA2, unsigned char INB2, unsigned char EN2DIAG2, unsigned char CS2, unsigned char INA3,@
+@unsigned char INB3, unsigned char EN3DIAG3, unsigned char CS3, unsigned char INA4, unsigned char INB4, unsigned char EN4DIAG4,@
+@unsigned char CS4):= Alternate constructor for shield connections remapped by user, all custom pins setup (note: assumes PWM pins are not remapped)
+- @DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3(unsigned char INA1, unsigned char INB1, unsigned char EN1DIAG1,@
+@unsigned char CS1, unsigned char INA2, unsigned char INB2, unsigned char EN2DIAG2, unsigned char CS2, unsigned char INA3,@
+@unsigned char INB3, unsigned char EN3DIAG3, unsigned char CS3, unsigned char INA4, unsigned char INB4, unsigned char EN4DIAG4,@
+@unsigned char CS4, unsigned char PWM1, unsigned char PWM2, unsigned char PWM3, unsigned char PWM4):= Alternate constructor for shield connections remapped by user, all custom pins setup
 
-- @void init()@ := Initialize pinModes and timer1.
+- @void init()@ := Initialize pinModes and timers.
 
 - @void setM1Speed(int speed)@ := Set speed and direction for motor 1. Speed should be between -400 and 400. 400 corresponds to motor current flowing from M1A to M1B. -400 corresponds to motor current flowing from M1B to M1A.  0 corresponds to full coast.
 - @void setM2Speed(int speed)@ := Set speed and direction for motor 2. Speed should be between -400 and 400. 400 corresponds to motor current flowing from M2A to M2B. -400 corresponds to motor current flowing from M2B to M2A.  0 corresponds to full coast.
-- @void setSpeeds(int m1Speed, int m2Speed)@ := Set speed and direction for motor 1 and 2. 
+- @void setM3Speed(int speed)@ := Set speed and direction for motor 3. Speed should be between -400 and 400. 400 corresponds to motor current flowing from M3A to M3B. -400 corresponds to motor current flowing from M3B to M3A.  0 corresponds to full coast.
+- @void setM4Speed(int speed)@ := Set speed and direction for motor 4. Speed should be between -400 and 400. 400 corresponds to motor current flowing from M4A to M4B. -400 corresponds to motor current flowing from M4B to M4A.  0 corresponds to full coast.
+- @void setSpeeds(int m1Speed, int m2Speed, int m3Speed, int m4Speed)@ := Set speed and direction for motor 1, 2, 3, 4. 
 
 - @void setM1Brake(int brake)@ := Set brake for motor 1. Brake should be between 0 and 400. 0 corresponds to full coast, and 400 corresponds to full brake.
 - @void setM2Brake(int brake)@ := Set brake for motor 2. Brake should be between 0 and 400. 0 corresponds to full coast, and 400 corresponds to full brake.
-- @void setBrakes(int m1Brake, int m2Brake)@ := Set brake for motor 1 and 2.
+- @void setM3Brake(int brake)@ := Set brake for motor 3. Brake should be between 0 and 400. 0 corresponds to full coast, and 400 corresponds to full brake.
+- @void setM4Brake(int brake)@ := Set brake for motor 4. Brake should be between 0 and 400. 0 corresponds to full coast, and 400 corresponds to full brake.
+- @void setBrakes(int m1Brake, int m2Brake, int m3Brake, int m4Brake)@ := Set brake for motor 1, 2,3 4.
 
 - @unsigned int getM1CurrentMilliamps()@ := Returns current reading from motor 1 in milliamps.
 - @unsigned int getM2CurrentMilliamps()@ := Returns current reading from motor 2 in milliamps.
+- @unsigned int getM3CurrentMilliamps()@ := Returns current reading from motor 3 in milliamps.
+- @unsigned int getM4CurrentMilliamps()@ := Returns current reading from motor 4 in milliamps.
 
 - @unsigned char getM1Fault()@ := Returns 1 if there is a fault on motor driver 1, 0 if no fault.
 - @unsigned char getM2Fault()@ := Returns 1 if there is a fault on motor driver 2, 0 if no fault.
+- @unsigned char getM3Fault()@ := Returns 1 if there is a fault on motor driver 3, 0 if no fault.
+- @unsigned char getM4Fault()@ := Returns 1 if there is a fault on motor driver 4, 0 if no fault.
 
 h2. Version History
 
