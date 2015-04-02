@@ -12,7 +12,7 @@ h2. Getting Started
 
 h3. Software
 
-Download the archive from "GitHub":https://github.com/pololu/Dual-VNH5019-Motor-Shield, decompress it, and move the "DualVNH5019MotorShieldMod3" folder into the "libraries" subdirectory inside your Arduino sketchbook directory. You can view your sketchbook location by selecting File->Preferences in the Arduino environment; if there is not already a "libraries" folder in that location, you should create it yourself. After installing the library, restart the Arduino environment so it can find the DualVNH5019MotorShieldMod3 library and its examples.
+Download the archive from "GitHub":https://github.com/photodude/DualVNH5019MotorShieldMod3, decompress it, and move the "DualVNH5019MotorShieldMod3" folder into the "libraries" subdirectory inside your Arduino sketchbook directory. You can view your sketchbook location by selecting File->Preferences in the Arduino environment; if there is not already a "libraries" folder in that location, you should create it yourself. After installing the library, restart the Arduino environment so it can find the DualVNH5019MotorShieldMod3 library and its examples.
 
 h3. Hardware
 
