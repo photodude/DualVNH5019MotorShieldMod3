@@ -15,7 +15,7 @@ DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3()
   _EN2DIAG2 = 12;
   _CS2 = A1;
  //default Pin map motor sheild 2
-  _INA3 = 22;
+  _INA3 = 24;
   _INB3 = 26;
   _EN3DIAG3 = 22;
   _CS3 = A8; 
