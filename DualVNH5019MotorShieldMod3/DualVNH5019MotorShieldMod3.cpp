@@ -405,24 +405,24 @@ unsigned char DualVNH5019MotorShieldMod3::getM4Fault()
 }
 
 //stop if fault methods
-void stopIfFault()
+void DualVNH5019MotorShieldMod3::stopIfFault()
 {
-  if (md.getM1Fault())
+  if (getM1Fault())
   {
     Serial.println("M1 fault");
     while(1);
   }
-  if (md.getM2Fault())
+  if (getM2Fault())
   {
     Serial.println("M2 fault");
     while(1);
   }
-    if (md.getM3Fault())
+    if (getM3Fault())
   {
     Serial.println("M3 fault");
     while(1);
   }
-    if (md.getM4Fault())
+    if (getM4Fault())
   {
     Serial.println("M4 fault");
     while(1);
