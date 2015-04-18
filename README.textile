@@ -1,6 +1,6 @@
 h1. Arduino library for the running two Pololu Dual VNH5019 Motor Driver Shields on an Arduino Mega
 
-Version: 1.2.4.dualsheilds
+Version: 1.2.5.dualsheilds
 Release Date: 2015-04-18
 "www.pololu.com":http://www.pololu.com/
 
@@ -65,6 +65,7 @@ h2. Library Reference
 
 h2. Version History
 
+* 1.2.5.dualshields (2015-04-18): Fixed a bug that was introduced in 1.2.4.dualshields
 * 1.2.4.dualshields (2015-04-18): Fixed a bug that was introduced in 1.2.3.dualshields with incorrect defualt pin for M3
 * 1.2.3.dualshields (2015-02-22): Custom library for running two DualVNH5019MotorShields on a Mega (4 motors total).
 * 1.2.3 (2014-03-24): Added 20 kHz PWM support for ATmega32U4. Thanks blacksound.
