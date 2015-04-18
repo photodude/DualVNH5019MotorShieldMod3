@@ -24,7 +24,7 @@ void loop()
 for (int i = 0; i <= 400; i++)
   {
     md.setM1Speed(i);
-    stopIfFault();
+    md.stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M1 current: ");
@@ -36,7 +36,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = 400; i >= -400; i--)
   {
     md.setM1Speed(i);
-    stopIfFault();
+    md.stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M1 current: ");
@@ -48,7 +48,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = -400; i <= 0; i++)
   {
     md.setM1Speed(i);
-    stopIfFault();
+    md.stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M1 current: ");
@@ -60,7 +60,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = 0; i <= 400; i++)
   {
     md.setM2Speed(i);
-    stopIfFault();
+    md.stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M2 current: ");
@@ -72,7 +72,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = 400; i >= -400; i--)
   {
     md.setM2Speed(i);
-    stopIfFault();
+    md.stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M2 current: ");
@@ -84,7 +84,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = -400; i <= 0; i++)
   {
     md.setM2Speed(i);
-    stopIfFault();
+    md.stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M2 current: ");
@@ -96,7 +96,7 @@ for (int i = 0; i <= 400; i++)
 for (int i = 0; i <= 400; i++)
   {
     md.setM3Speed(i);
-    stopIfFault();
+    md.stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M3 current: ");
@@ -108,7 +108,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = 400; i >= -400; i--)
   {
     md.setM3Speed(i);
-    stopIfFault();
+    md.stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M3 current: ");
@@ -120,7 +120,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = -400; i <= 0; i++)
   {
     md.setM3Speed(i);
-    stopIfFault();
+    md.stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M3 current: ");
@@ -132,7 +132,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = 0; i <= 400; i++)
   {
     md.setM4Speed(i);
-    stopIfFault();
+    md.stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M4 current: ");
@@ -144,7 +144,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = 400; i >= -400; i--)
   {
     md.setM4Speed(i);
-    stopIfFault();
+    md.stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M4 current: ");
@@ -156,7 +156,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = -400; i <= 0; i++)
   {
     md.setM4Speed(i);
-    stopIfFault();
+    md.stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M4 current: ");
