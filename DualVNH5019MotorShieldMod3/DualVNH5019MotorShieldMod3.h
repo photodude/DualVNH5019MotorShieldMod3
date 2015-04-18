@@ -22,21 +22,21 @@ class DualVNH5019MotorShieldMod3
     void stopIfFault(); // stop if fault declaration
     void setM1Speed(int speed); // Set speed for M1.
     void setM2Speed(int speed); // Set speed for M2.
-	void setM3Speed(int speed); // Set speed for M3.
+    void setM3Speed(int speed); // Set speed for M3.
     void setM4Speed(int speed); // Set speed for M4.
-    void setSpeeds(int m1Speed, int m2Speed,int m3Speed, int m4Speed); // Set speed for M1, M2, M3 and M4.
+    void setSpeeds(int m1Speed, int m2Speed, int m3Speed, int m4Speed); // Set speed for M1, M2, M3 and M4.
     void setM1Brake(int brake); // Brake M1. 
     void setM2Brake(int brake); // Brake M2.
-	void setM3Brake(int brake); // Brake M3. 
+    void setM3Brake(int brake); // Brake M3. 
     void setM4Brake(int brake); // Brake M4.
     void setBrakes(int m1Brake, int m2Brake, int m3Brake, int m4Brake); // Brake M1, M2, M3 and M4.
     unsigned int getM1CurrentMilliamps(); // Get current reading for M1. 
     unsigned int getM2CurrentMilliamps(); // Get current reading for M2.
-	unsigned int getM3CurrentMilliamps(); // Get current reading for M3. 
+    unsigned int getM3CurrentMilliamps(); // Get current reading for M3. 
     unsigned int getM4CurrentMilliamps(); // Get current reading for M4.
     unsigned char getM1Fault(); // Get fault reading from M1.
     unsigned char getM2Fault(); // Get fault reading from M2.
-	unsigned char getM3Fault(); // Get fault reading from M3.
+    unsigned char getM3Fault(); // Get fault reading from M3.
     unsigned char getM4Fault(); // Get fault reading from M4.
     
   private:
