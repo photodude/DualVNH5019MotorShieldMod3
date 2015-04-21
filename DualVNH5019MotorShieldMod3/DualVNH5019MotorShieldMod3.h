@@ -19,7 +19,6 @@ class DualVNH5019MotorShieldMod3
    
     // PUBLIC METHODS
     void init(); // Initialize TIMERS, set the PWM to 20kHZ.
-    void stopIfFault(); // stop if fault declaration
     void setM1Speed(int speed); // Set speed for M1.
     void setM2Speed(int speed); // Set speed for M2.
     void setM3Speed(int speed); // Set speed for M3.
@@ -60,7 +59,5 @@ class DualVNH5019MotorShieldMod3
     unsigned char _PWM4;
     unsigned char _EN4DIAG4;
     unsigned char _CS4;
-    
 };
-
 #endif
