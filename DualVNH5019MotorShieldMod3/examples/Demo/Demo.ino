@@ -16,7 +16,7 @@ void setup()
   md.init();
 
 //stop if fault methods
-void DualVNH5019MotorShieldMod3::stopIfFault()
+void stopIfFault()
 {
   if (getM1Fault())
   {
