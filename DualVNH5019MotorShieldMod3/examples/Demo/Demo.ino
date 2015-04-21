@@ -14,6 +14,31 @@ void setup()
   Serial.println("Starting 2 by Dual VNH5019 Motor Shield - Mod3 LIB");
   md.init();
 
+//stop if fault methods
+void DualVNH5019MotorShieldMod3::stopIfFault()
+{
+  if (getM1Fault())
+  {
+    Serial.println("M1 fault");
+    while(1);
+  }
+  if (getM2Fault())
+  {
+    Serial.println("M2 fault");
+    while(1);
+  }
+    if (getM3Fault())
+  {
+    Serial.println("M3 fault");
+    while(1);
+  }
+    if (getM4Fault())
+  {
+    Serial.println("M4 fault");
+    while(1);
+  }
+}
+
 }
 
 void loop()
@@ -24,7 +49,7 @@ void loop()
 for (int i = 0; i <= 400; i++)
   {
     md.setM1Speed(i);
-    md.stopIfFault();
+    stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M1 current: ");
@@ -36,7 +61,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = 400; i >= -400; i--)
   {
     md.setM1Speed(i);
-    md.stopIfFault();
+    stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M1 current: ");
@@ -48,7 +73,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = -400; i <= 0; i++)
   {
     md.setM1Speed(i);
-    md.stopIfFault();
+    stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M1 current: ");
@@ -60,7 +85,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = 0; i <= 400; i++)
   {
     md.setM2Speed(i);
-    md.stopIfFault();
+    stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M2 current: ");
@@ -72,7 +97,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = 400; i >= -400; i--)
   {
     md.setM2Speed(i);
-    md.stopIfFault();
+    stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M2 current: ");
@@ -84,7 +109,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = -400; i <= 0; i++)
   {
     md.setM2Speed(i);
-    md.stopIfFault();
+    stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M2 current: ");
@@ -96,7 +121,7 @@ for (int i = 0; i <= 400; i++)
 for (int i = 0; i <= 400; i++)
   {
     md.setM3Speed(i);
-    md.stopIfFault();
+    stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M3 current: ");
@@ -108,7 +133,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = 400; i >= -400; i--)
   {
     md.setM3Speed(i);
-    md.stopIfFault();
+    stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M3 current: ");
@@ -120,7 +145,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = -400; i <= 0; i++)
   {
     md.setM3Speed(i);
-    md.stopIfFault();
+    stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M3 current: ");
@@ -132,7 +157,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = 0; i <= 400; i++)
   {
     md.setM4Speed(i);
-    md.stopIfFault();
+    stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M4 current: ");
@@ -144,7 +169,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = 400; i >= -400; i--)
   {
     md.setM4Speed(i);
-    md.stopIfFault();
+    stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M4 current: ");
@@ -156,7 +181,7 @@ for (int i = 0; i <= 400; i++)
   for (int i = -400; i <= 0; i++)
   {
     md.setM4Speed(i);
-    md.stopIfFault();
+    stopIfFault();
     if (i%200 == 100)
     {
       Serial.print("M4 current: ");
