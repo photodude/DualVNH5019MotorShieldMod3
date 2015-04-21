@@ -3,15 +3,16 @@
 #include <DualVNH5019MotorShieldMod3.h>
 //#include <Encoder.h>
 
-// configure library with pins as remapped for single-channel operation
-// this lets the single motor be controlled as if it were "motor 1"
+//set up the class dot names for the libraries and
+// configure library pins
 DualVNH5019MotorShieldMod3 md;//Use default pins
 
 void setup()
 {
   // Open serial communications and wait for port to open:
   Serial.begin(115200);
-  Serial.println("Starting 2 by Dual VNH5019 Motor Shield - Mod3 LIB");
+  Serial.println("Starting 2X Dual VNH5019 Motor Shield - Mod3 LIB");
+  //start the motor shields and motor pins
   md.init();
 
 //stop if fault methods
