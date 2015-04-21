@@ -19,4 +19,3 @@ getM1Fault	KEYWORD2
 getM2Fault	KEYWORD2
 getM3Fault	KEYWORD2
 getM4Fault	KEYWORD2
-stopIfFault KEYWORD2
