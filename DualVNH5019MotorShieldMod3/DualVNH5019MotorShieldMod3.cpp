@@ -1,5 +1,4 @@
 #include "DualVNH5019MotorShieldMod3.h"
-#define MEGA //require mega for running two DualVNH5019MotorShields
 
 // Constructors ////////////////////////////////////////////////////////////////
 //all default pins function (note: motor sheild 2 is "custom")
@@ -9,20 +8,20 @@ DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3()
   _INA1 = 2;
   _INB1 = 4;
   _EN1DIAG1 = 6;
-  _CS1 = A0; 
+  _CS1 = 0; //analog 0 pin
   _INA2 = 7;
   _INB2 = 8;
   _EN2DIAG2 = 12;
-  _CS2 = A1;
+  _CS2 = 1; //analog 1 pin
  //default Pin map motor sheild 2
   _INA3 = 24;
   _INB3 = 26;
   _EN3DIAG3 = 22;
-  _CS3 = A8; 
+  _CS3 = 8; // analog 8 pin
   _INA4 = 25;
   _INB4 = 27;
   _EN4DIAG4 = 23;
-  _CS4 = A9;
+  _CS4 = 9; //analog 9 pin
 
   //default pwm motor sheild 1
   _PWM1 = 9;
@@ -38,11 +37,11 @@ DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3(unsigned char INA3, unsig
   _INA1 = 2;
   _INB1 = 4;
   _EN1DIAG1 = 6;
-  _CS1 = A0; 
+  _CS1 = 0; //analog 0 pin
   _INA2 = 7;
   _INB2 = 8;
   _EN2DIAG2 = 12;
-  _CS2 = A1;
+  _CS2 = 1; //analog 1 pin
  //Custom Pin map motor sheild 2
   _INA3 = INA3;
   _INB3 = INB3;
@@ -133,12 +132,10 @@ void DualVNH5019MotorShieldMod3::init()
   pinMode(_INB1,OUTPUT);
   pinMode(_PWM1,OUTPUT);
   pinMode(_EN1DIAG1,INPUT);
-  pinMode(_CS1,INPUT);
   pinMode(_INA2,OUTPUT);
   pinMode(_INB2,OUTPUT);
   pinMode(_PWM2,OUTPUT);
   pinMode(_EN2DIAG2,INPUT);
-  pinMode(_CS2,INPUT);
   // Define pinMode for the pins motor shield2 and set the frequency for timer 5.
 //  TCCR5A |= COM5B1; _PWM3 = &OCR5B; // PWM frequency calculation // 16MHz / 1 (prescaler) / 2 (phase-correct) / 400 (top) = 20kHz
 //  TCCR5A |= COM5A1; _PWM4 = &OCR5A; // PWM frequency calculation // 16MHz / 1 (prescaler) / 2 (phase-correct) / 400 (top) = 20kHz
@@ -147,12 +144,10 @@ void DualVNH5019MotorShieldMod3::init()
   pinMode(_INB3,OUTPUT);
   pinMode(_PWM3,OUTPUT);
   pinMode(_EN3DIAG3,INPUT);
-  pinMode(_CS3,INPUT);
   pinMode(_INA4,OUTPUT);
   pinMode(_INB4,OUTPUT);
   pinMode(_PWM4,OUTPUT);
   pinMode(_EN4DIAG4,INPUT);
-  pinMode(_CS4,INPUT);
 }
 // Set speed for motor 1, speed is a number betwenn -400 and 400
 void DualVNH5019MotorShieldMod3::setM1Speed(int speed)
@@ -402,29 +397,4 @@ unsigned char DualVNH5019MotorShieldMod3::getM3Fault()
 unsigned char DualVNH5019MotorShieldMod3::getM4Fault()
 {
   return !digitalRead(_EN4DIAG4);
-}
-
-//stop if fault methods
-void DualVNH5019MotorShieldMod3::stopIfFault()
-{
-  if (getM1Fault())
-  {
-    Serial.println("M1 fault");
-    while(1);
-  }
-  if (getM2Fault())
-  {
-    Serial.println("M2 fault");
-    while(1);
-  }
-    if (getM3Fault())
-  {
-    Serial.println("M3 fault");
-    while(1);
-  }
-    if (getM4Fault())
-  {
-    Serial.println("M4 fault");
-    while(1);
-  }
 }
