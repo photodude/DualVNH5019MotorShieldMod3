@@ -1,5 +1,5 @@
 //Motor Test Example
-#define MEGA
+//#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
 #include <DualVNH5019MotorShieldMod3.h>
 //#include <Encoder.h>
 
