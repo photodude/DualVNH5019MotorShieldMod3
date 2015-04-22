@@ -1,5 +1,7 @@
 //Motor Test Example
-//#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+//#ifndef (__AVR_ATmega1280__) || ndef(__AVR_ATmega2560__)
+//#error "This library only supports Arduino Mega boards."
+//#endif
 #include <DualVNH5019MotorShieldMod3.h>
 //#include <Encoder.h>
 
