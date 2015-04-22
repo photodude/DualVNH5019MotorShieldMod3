@@ -1,3 +1,6 @@
+//#ifndef (__AVR_ATmega1280__) || ndef(__AVR_ATmega2560__)
+//#error "This library only supports Arduino Mega boards."
+//#endif
 #ifndef DualVNH5019MotorShieldMod3_h
 #define DualVNH5019MotorShieldMod3_h
 
