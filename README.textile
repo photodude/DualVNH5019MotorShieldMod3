@@ -76,7 +76,8 @@ h2. Version History
 * 1.0.1 (2011-11-07): Adds support for Arduinos not based on ATmega168/328.
 * 1.0.0 (2011-10-28): Original release.
 
-h2. Notes about timers: 
+h2. Notes about timers:
+
 - Timer0 is used by the functions millis(), delay(), micros() and delayMicroseconds(), 
 - Timer 1 is used by the servo.h library on Arduino Uno
   - timer5 is used by the servo library on Arduino Mega
