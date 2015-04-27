@@ -125,4 +125,4 @@ h2. Notes about timers:
   - timer 3 —–  pin 2, 3, 5
   - timer 4 —–  pin 6, 7, 8
   - timer 5 —– pin 44, 45, 46 (servo library)
-- [You can "manually" implement a sudo PWM on any pin by repeatedly turning the pin on and off for the desired times](http://www.arduino.cc/en/Tutorial/SecretsOfArduinoPWM)
+- (You can "manually" implement a sudo PWM on any pin by repeatedly turning the pin on and off for the desired times)[http://www.arduino.cc/en/Tutorial/SecretsOfArduinoPWM]
