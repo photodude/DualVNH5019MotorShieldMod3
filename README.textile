@@ -17,8 +17,9 @@ Download the archive from "GitHub":https://github.com/photodude/DualVNH5019Motor
 h3. Hardware
 
 The Dual VNH5019 Motor Driver Shield can be purchased on "Pololu's website":http://www.pololu.com/catalog/product/2507. See the "motor shield user's guide":http://www.pololu.com/docs/0J49 for more details.
-  * for the best stability, and the least conflicts with other libraries, you need cut and move the PWM pins on the shields for use with the mega, for best results avoid using pins 4, 9, 10, 13, 44, 45, or 46
-  ** information on how to move the pins is in the pololu DualVNH5019MotorShield user guide
+* for the best stability, and the least conflicts with other libraries, you need cut and move the PWM pins on the shields
+** for use with the mega, for best results avoid using pins 4, 9, 10, 13, 44, 45, or 46 for PWM
+** information on how to move the pins is in the pololu DualVNH5019MotorShield user guide
 
 h2. Example Program
 
@@ -125,4 +126,4 @@ h2. Notes about timers:
 ** timer 3 —–  pin 2, 3, 5
 ** timer 4 —–  pin 6, 7, 8
 ** timer 5 —– pin 44, 45, 46 (servo library)
-* (You can "manually" implement a sudo PWM on any pin by repeatedly turning the pin on and off for the desired times)[http://www.arduino.cc/en/Tutorial/SecretsOfArduinoPWM]
+* "You can manually implement a sudo PWM on any pin by repeatedly turning the pin on and off for the desired times"=http://www.arduino.cc/en/Tutorial/SecretsOfArduinoPWM
