@@ -34,7 +34,7 @@ before_script:
  # put your source files in a folder under a new libraries folder
  - sudo mkdir /usr/src/arduino
  - sudo mkdir /usr/src/arduino/libraries
- - sudo ln -s $TRAVIS_BUILD_DIR /usr/src/arduino/libraries/something
+ - sudo ln -s $TRAVIS_BUILD_DIR /usr/src/arduino/libraries/DualVNH5019MotorShieldMod3
  
 script:
- - sudo DISPLAY=:1.0 /usr/local/share/arduino/arduino --board $BOARD --pref sketchbook.path=/usr/src/arduino --verify /usr/src/arduino/libraries/something/examples/$NAME/$NAME.ino
+ - sudo DISPLAY=:1.0 /usr/local/share/arduino/arduino --board $BOARD --pref sketchbook.path=/usr/src/arduino --verify /usr/src/arduino/libraries/DualVNH5019MotorShieldMod3/examples/$NAME/$NAME.ino
