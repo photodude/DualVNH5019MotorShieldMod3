@@ -12,7 +12,8 @@ language: cpp
 env:
  # We'll test against only a single library example, and only for uno, but you could add more combinations
  # https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc
- - BOARD=arduino:avr:mega NAME=NullStreamExample
+ - BOARD=arduino:avr:mega
+   NAME=Demo
 
 compiler:
  - gcc
