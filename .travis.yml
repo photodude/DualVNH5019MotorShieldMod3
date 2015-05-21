@@ -12,9 +12,8 @@ language: cpp
 env:
  # We'll test against only a single library example, and only for uno, but you could add more combinations
  # https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc
- - BOARD=arduino:avr:uno NAME=NullStreamExample
-#  - BOARD=attiny:avr:attiny85 NAME=$NullStreamExample
- 
+ - BOARD=arduino:avr:mega NAME=NullStreamExample
+
 compiler:
  - gcc
  
@@ -26,11 +25,6 @@ install:
  - wget http://downloads-02.arduino.cc/arduino-1.6.1-linux64.tar.xz
  - tar -xvf arduino-1.6.1-linux64.tar.xz
  - sudo mv arduino-1.6.1/ /usr/local/share/arduino
- 
- # you could add attiny the extra attiny board package
-# - wget https://github.com/damellis/attiny/archive/ide-1.6.x.zip
-# - unzip ide-1.6.x.zip
-# - sudo mv attiny-ide-1.6.x/attiny /usr/local/share/arduino/hardware/
  
 before_script:
  # arduino requires an X server even with command line
