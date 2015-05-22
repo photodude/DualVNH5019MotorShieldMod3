@@ -9,11 +9,6 @@
 #       NullStreamExample.ino
  
 language: cpp
-env:
- # We'll test against only a single library example, and only for uno, but you could add more combinations
- # https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc
- - BOARD = mega
-   NAME = Demo
 
 compiler:
  - gcc
@@ -34,4 +29,4 @@ before_script:
  - sudo ln -s $TRAVIS_BUILD_DIR /usr/src/arduino/libraries/DualVNH5019MotorShieldMod3
  
 script:
- - cd $TRAVIS_BUILD_DIR/examples/$NAME/$NAME.ino && ano build --board-model $BOARD
+ - cd $TRAVIS_BUILD_DIR/examples/Demo/Demo.ino && ano build --board-model mega
