@@ -32,7 +32,7 @@ before_script:
  - sudo mkdir /usr/src/arduino
  - sudo mkdir /usr/src/arduino/libraries
  - sudo ln -s $TRAVIS_BUILD_DIR /usr/src/arduino/libraries/DualVNH5019MotorShieldMod3
- - ano --board-model $BOARD
+ - ano init --board-model $BOARD
  
 script:
- - cd $TRAVIS_BUILD_DIR/examples/$NAME/$NAME.ino && ano build --board-model $BOARD
+ - cd $TRAVIS_BUILD_DIR/examples/$NAME/$NAME.ino && ano build
