@@ -1,12 +1,4 @@
-# Test build your arduino libraries with travis and the official arduino tool chain
- 
-# assumes directory structure
-# /NullStream
-#   NullStream.h
-#   NullStream.cpp
-#   examples
-#     NullStreamExample
-#       NullStreamExample.ino
+# Test build your arduino libraries with travis and Arturo
  
 language: cpp
 
@@ -21,12 +13,7 @@ install:
  - sudo mv arduino-1.6.1 /usr/local/share/arduino
  - git clone -b master https://github.com/scottdarch/Arturo.git
  - cd Arturo && sudo make install && cd ../
+ - pwd
 
-before_script:
-  # put your source files in a folder under a new libraries folder
- - sudo mkdir /usr/src/arduino
- - sudo mkdir /usr/src/arduino/libraries
- - sudo ln -s $TRAVIS_BUILD_DIR /usr/src/arduino/libraries/DualVNH5019MotorShieldMod3
- 
 script:
  - cd examples/Demo && ano build --board-model mega
