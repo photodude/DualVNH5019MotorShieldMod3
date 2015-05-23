@@ -16,5 +16,4 @@ install:
  - pwd
 
 script:
- - cd DualVNH5019MotorShieldMod3/examples/Demo && ano build --board-model mega
- - pwd
+ - cd DualVNH5019MotorShieldMod3/examples && ano build --board-model mega
