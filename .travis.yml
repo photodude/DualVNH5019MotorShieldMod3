@@ -8,7 +8,6 @@ compiler:
 install:
  # arduino
  - wget http://downloads-02.arduino.cc/arduino-1.6.1-linux64.tar.xz
- - ls -alF
  - tar Jxf arduino-1.6.1-linux64.tar.xz
  - sudo mv arduino-1.6.1 /usr/local/share/arduino
  - git clone -b master https://github.com/scottdarch/Arturo.git
@@ -23,4 +22,4 @@ before_script:
 
 script:
  - cd DualVNH5019MotorShieldMod3/examples/Demo && ano build --board-model mega
- - pwd
+ - ls -alF
