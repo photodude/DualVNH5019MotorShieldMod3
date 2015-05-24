@@ -15,6 +15,12 @@ install:
  - cd Arturo && sudo make install && cd ../
  - pwd
 
+before_script:
+ # put your source files in a folder under a new libraries folder
+ - sudo mkdir /usr/src/arduino
+ - sudo mkdir /usr/src/arduino/libraries
+ - sudo ln -s $TRAVIS_BUILD_DIR /usr/src/arduino/libraries/DualVNH5019MotorShieldMod3
+
 script:
  - cd DualVNH5019MotorShieldMod3/examples/Demo && ano build --board-model mega
  - pwd
