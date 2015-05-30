@@ -21,5 +21,5 @@ before_script:
  - sudo ln -s $TRAVIS_BUILD_DIR /usr/src/arduino/libraries/DualVNH5019MotorShieldMod3
 
 script:
- - cd DualVNH5019MotorShieldMod3/examples/Demo && ano build --board-model mega
+ - cd DualVNH5019MotorShieldMod3/examples/Demo && ano build --board-model mega --source-dir . --cpu atmega1280
  - ls -alF
