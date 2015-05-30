@@ -11,7 +11,8 @@ install:
  - tar Jxf arduino-1.6.1-linux64.tar.xz
  - sudo mv arduino-1.6.1 /usr/local/share/arduino
  - git clone -b master https://github.com/scottdarch/Arturo.git
- - cd Arturo && sudo make install && cd ../
+ - cd Arturo && sudo ano init then make-gen
+ - sudo make install && cd ../
  - pwd
 
 before_script:
@@ -19,7 +20,8 @@ before_script:
  - sudo mkdir /usr/src/arduino
  - sudo mkdir /usr/src/arduino/libraries
  - sudo ln -s $TRAVIS_BUILD_DIR /usr/src/arduino/libraries/DualVNH5019MotorShieldMod3
- - ano init
+ - sudo arduino --install-library "DualVNH5019MotorShieldMod3"
+ - ls -alF
 
 script:
  - cd DualVNH5019MotorShieldMod3 && ano build --board-model mega --source-dir . --cpu atmega1280
