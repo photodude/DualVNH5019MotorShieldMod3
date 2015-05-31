@@ -11,7 +11,7 @@ install:
  - tar Jxf arduino-1.6.1-linux64.tar.xz
  - sudo mv arduino-1.6.1 /usr/local/share/arduino
  - git clone -b master https://github.com/scottdarch/Arturo.git
- - cd Arturo && sudo ano init then make-gen
+ - cd Arturo && ano init then make-gen
  - sudo make install && cd ../
  - pwd
 
