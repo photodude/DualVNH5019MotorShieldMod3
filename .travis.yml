@@ -12,7 +12,8 @@ install:
  - sudo mv arduino-1.6.1 /usr/local/share/arduino
  - git clone -b master https://github.com/scottdarch/Arturo.git
  - cd Arturo && sudo make install && cd ../
- - ano init then make-gen
+ - ano init
+ - make-gen
 
 before_script:
  # put your source files in a folder under a new libraries folder
