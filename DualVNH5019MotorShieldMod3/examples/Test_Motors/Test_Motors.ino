@@ -2,7 +2,7 @@
 //#ifndef (__AVR_ATmega1280__) || ndef(__AVR_ATmega2560__)
 //#error "This library only supports Arduino Mega boards."
 //#endif
-#include <DualVNH5019MotorShieldMod3.h>
+#include "DualVNH5019MotorShieldMod3.h"
 //#include <Encoder.h>
 
 // configure library with pins as remapped for single-channel operation
