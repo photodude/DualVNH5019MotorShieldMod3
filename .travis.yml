@@ -6,7 +6,7 @@ compiler:
  - gcc
  
 install:
- - sudo apt-get update && sudo apt-get install arduino arduino-core
+ #- sudo apt-get update && sudo apt-get install arduino arduino-core
  # arduino
  - wget http://downloads-02.arduino.cc/arduino-1.6.1-linux64.tar.xz
  - tar Jxf arduino-1.6.1-linux64.tar.xz
