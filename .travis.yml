@@ -19,6 +19,7 @@ before_script:
  - sudo mkdir /usr/src/arduino
  - sudo mkdir /usr/src/arduino/libraries
  - sudo ln -s $TRAVIS_BUILD_DIR /usr/src/arduino/libraries/DualVNH5019MotorShieldMod3
+ - setenv DISPLAY :0.0
  - arduino --install-library
  - ls -alF
 
