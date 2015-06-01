@@ -7,18 +7,20 @@ compiler:
  
 install:
  #- sudo apt-get update && sudo apt-get install arduino arduino-core
- # arduino
+ # install arduino 1.6.1
  - wget http://downloads-02.arduino.cc/arduino-1.6.1-linux64.tar.xz
  - tar Jxf arduino-1.6.1-linux64.tar.xz
  - sudo mv arduino-1.6.1 /usr/local/share/arduino
- - git clone -b master https://github.com/scottdarch/Arturo.git
- - cd Arturo && sudo make install && cd ../
-
-before_script:
  # put your source files in a folder under a new libraries folder
  - sudo mkdir /usr/src/arduino
  - sudo mkdir /usr/src/arduino/libraries
  - sudo ln -s $TRAVIS_BUILD_DIR /usr/src/arduino/libraries/DualVNH5019MotorShieldMod3
+ # install arturo
+ - git clone -b master https://github.com/scottdarch/Arturo.git
+ - cd Arturo && sudo make install && cd ../
+
+before_script:
+
  #- sudo setenv DISPLAY :0.0
  #- arduino --install-library
  - ls -alF
