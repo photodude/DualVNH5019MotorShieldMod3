@@ -9,7 +9,7 @@ install:
  - sudo apt-get update
  - sudo apt-get upgrade
  - sudo apt-get dist-upgrade
- - sudo apt-get install arduino arduino-core
+ - sudo apt-get install arduino=1.6.1 arduino-core=1.6.1
  - ls -alF
  # install arduino 1.6.1
  #- wget http://downloads-02.arduino.cc/arduino-1.6.1-linux64.tar.xz
