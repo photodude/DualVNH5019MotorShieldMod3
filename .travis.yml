@@ -10,12 +10,12 @@ install:
  #- sudo apt-get update
  #- sudo apt-get upgrade
  #- sudo apt-get dist-upgrade
- - sudo apt-get install arduino=1.6.1 arduino-core=1.6.1
- - ls -alF
+ #- sudo apt-get install arduino=1.6.1 arduino-core=1.6.1
+ #- ls -alF
  # Install arduino 1.6.1
- #- wget http://downloads-02.arduino.cc/arduino-1.6.1-linux64.tar.xz
- #- tar Jxf arduino-1.6.1-linux64.tar.xz
- #- sudo mv arduino-1.6.1 /usr/local/share/arduino
+ - wget http://downloads-02.arduino.cc/arduino-1.6.1-linux64.tar.xz
+ - tar Jxf arduino-1.6.1-linux64.tar.xz
+ - sudo mv arduino-1.6.1 /usr/local/share/arduino
  # put your source files in a folder under a new libraries folder
  - sudo mkdir /usr/src/arduino
  - sudo mkdir /usr/src/arduino/libraries
