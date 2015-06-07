@@ -21,8 +21,8 @@ install:
  - sudo mkdir /usr/src/arduino/libraries
  - sudo ln -s $TRAVIS_BUILD_DIR /usr/src/arduino/libraries/DualVNH5019MotorShieldMod3
  - sudo ln -s $TRAVIS_BUILD_DIR /usr/local/share/arduino/libraries/DualVNH5019MotorShieldMod3
- - sudo mkdir /usr/src/lib
- - sudo ln -s $TRAVIS_BUILD_DIR /usr/src/lib/DualVNH5019MotorShieldMod3
+ - sudo mkdir "$TRAVIS_BUILD_DIR"/DualVNH5019MotorShieldMod3/lib
+ - sudo ln -s $TRAVIS_BUILD_DIR "$TRAVIS_BUILD_DIR"/DualVNH5019MotorShieldMod3/lib
  - ls -alF
  - echo $TRAVIS_BUILD_DIR
  # Try copying libraries to lib directory 
