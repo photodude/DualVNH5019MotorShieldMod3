@@ -11,7 +11,7 @@ install:
  #- sudo apt-get upgrade
  #- sudo apt-get dist-upgrade
  #- sudo apt-get install arduino=1.6.1 arduino-core=1.6.1
- #- ls -alF
+ - ls -alF
  # Install arduino 1.6.1
  - wget http://downloads-02.arduino.cc/arduino-1.6.1-linux64.tar.xz
  - tar Jxf arduino-1.6.1-linux64.tar.xz
@@ -20,6 +20,7 @@ install:
  - sudo mkdir /usr/src/arduino
  - sudo mkdir /usr/src/arduino/libraries
  - sudo ln -s $TRAVIS_BUILD_DIR /usr/src/arduino/libraries/DualVNH5019MotorShieldMod3
+ - ls -alF
  # Try copying libraries to lib directory 
  - sudo mkdir /DualVNH5019MotorShieldMod3/lib
  - sudo ln -s $TRAVIS_BUILD_DIR /DualVNH5019MotorShieldMod3/lib/DualVNH5019MotorShieldMod3
