@@ -19,7 +19,6 @@ install:
  # put your source files in a folder under a new libraries folder
  - sudo mkdir /usr/src/arduino
  - sudo mkdir /usr/src/arduino/libraries
- - sudo mkdir /usr/local/share/arduino/libraries
  - sudo ln -s $TRAVIS_BUILD_DIR /usr/src/arduino/libraries/DualVNH5019MotorShieldMod3
  - sudo ln -s $TRAVIS_BUILD_DIR /usr/local/share/arduino/libraries/DualVNH5019MotorShieldMod3
  - ls -alF
