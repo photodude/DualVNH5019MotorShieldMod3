@@ -24,7 +24,7 @@ install:
  # Bring the project in as a dependency
  - git clone -b master https://github.com/photodude/DualVNH5019MotorShieldMod3.git
  # install arturo
- - git clone -b master https://github.com/scottdarch/Arturo.git "$TRAVIS_BUILD_DIR"/lib
+ - git clone -b master https://github.com/scottdarch/Arturo.git lib
  - cd Arturo && sudo make install && cd ../
 
 before_script:
