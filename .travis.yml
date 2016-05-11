@@ -13,11 +13,11 @@ install:
  # download and install arduino 1.6.6
  - wget https://downloads.arduino.cc/arduino-1.6.9-linux64.tar.xz
  - tar xf arduino-1.6.9-linux64.tar.xz
- - mv arduino-1.6.9 $HOME/arduino
+ - mv arduino-1.6.9 $TRAVIS_BUILD_DIR/arduino
  # move this library to the arduino libraries folder
- - ln -s $PWD $HOME/arduino/libraries/DualVNH5019MotorShieldMod3
+ - ln -s $PWD $TRAVIS_BUILD_DIR/arduino/libraries/DualVNH5019MotorShieldMod3
  # add the arduino CLI to our PATH
- - export PATH="$HOME/arduino:$PATH"
+ - export PATH="$TRAVIS_BUILD_DIR/arduino:$PATH"
  # Put your source files in a folder under a new libraries folder
  #- sudo mkdir /usr/src/arduino
  #- sudo mkdir /usr/src/arduino/libraries
