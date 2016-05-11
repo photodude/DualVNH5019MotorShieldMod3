@@ -26,7 +26,7 @@ install:
  # Bring the project in as a dependency
  #- git clone -b master https://github.com/photodude/DualVNH5019MotorShieldMod3.git /usr/src/arduino/libraries/DualVNH5019MotorShieldMod3
  # install arturo
- - git clone -b master https://github.com/scottdarch/Arturo.git --separate-git-dir=lib
+ - git clone -b master https://github.com/scottdarch/Arturo.git
  - cd Arturo && sudo make install && cd ../
 
 before_script:
