@@ -13,12 +13,12 @@ install:
  # download and install arduino 1.6.6
  - wget https://downloads.arduino.cc/arduino-1.6.9-linux64.tar.xz
  - tar xf arduino-1.6.9-linux64.tar.xz
- - mv arduino-1.6.9 /usr/local/share/arduino
- - sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
+ - mv arduino-1.6.9 $HOME/arduino_ide
+ #- sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
  # move this library to the arduino libraries folder
- - ln -s $PWD /usr/local/share/arduino/libraries/DualVNH5019MotorShieldMod3
+ - ln -s $PWD $HOME/arduino_ide/libraries/DualVNH5019MotorShieldMod3
  # add the arduino CLI to our PATH
- - export PATH="/usr/local/share/arduino:$PATH"
+ - export PATH="$HOME/arduino_ide:$PATH"
  # Put your source files in a folder under a new libraries folder
  #- sudo mkdir /usr/src/arduino
  #- sudo mkdir /usr/src/arduino/libraries
