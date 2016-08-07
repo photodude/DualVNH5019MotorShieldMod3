@@ -10,8 +10,8 @@ cache:
   - "~/.platformio"
 
 env:
- - PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Demo/Demo.ino PLATFORMIO_BUILD_FLAGS="-I DualVNH5019MotorShieldMod3/"
- - PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Test_Motors/Test_Motors.ino PLATFORMIO_BUILD_FLAGS="-I DualVNH5019MotorShieldMod3/"
+ - PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Demo/Demo.ino PLATFORMIO_BUILD_FLAGS="-Ldir DualVNH5019MotorShieldMod3"
+ - PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Test_Motors/Test_Motors.ino PLATFORMIO_BUILD_FLAGS="-Ldir DualVNH5019MotorShieldMod3"
 
 install:
  - pip install -U platformio
