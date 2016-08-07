@@ -1,45 +1,26 @@
 # Test build your arduino libraries with travis and Arturo
- 
-language:
- - cpp
+language: python
+python:
+ - "2.7"
 
-compiler:
- - gcc
- 
+# Cache PlatformIO packages using Travis CI container-based infrastructure
+sudo: false
+cache:
+ directories:
+  - "~/.platformio"
+
+env:
+ - PLATFORMIO_CI_SRC=examples/Demo/Demo.ino
+ - PLATFORMIO_CI_SRC=examples/Test_Motors/Test_Motors.ino
+
 install:
- #- sudo apt-get update
- #- sudo apt-get upgrade
- #- sudo apt-get dist-upgrade
- # download and install arduino 1.6.6
- - wget https://downloads.arduino.cc/arduino-1.6.9-linux64.tar.xz
- - tar xf arduino-1.6.9-linux64.tar.xz
- - mv arduino-1.6.9 $HOME/arduino_ide
- #- sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
- # move this library to the arduino libraries folder
- - ln -s $PWD $HOME/arduino_ide/libraries/DualVNH5019MotorShieldMod3
- # add the arduino CLI to our PATH
- - export PATH="$HOME/arduino_ide:$PATH"
- # Put your source files in a folder under a new libraries folder
- #- sudo mkdir /usr/src/arduino
- #- sudo mkdir /usr/src/arduino/libraries
- #- sudo ln -s $TRAVIS_BUILD_DIR /usr/src/arduino/libraries/DualVNH5019MotorShieldMod3
- #- sudo ln -s $TRAVIS_BUILD_DIR /usr/local/share/arduino/libraries/DualVNH5019MotorShieldMod3
- # Bring the project in as a dependency
- #- git clone -b master https://github.com/photodude/DualVNH5019MotorShieldMod3.git /usr/src/arduino/libraries/DualVNH5019MotorShieldMod3
- # install arturo
- #- git clone -b master https://github.com/scottdarch/Arturo.git
- #- cd Arturo && sudo make install && cd ../
-
-before_script:
- #- sudo setenv DISPLAY :0.0
- #- arduino --install-library
- - ls -alF
+ - pip install -U platformio
 
 script:
- #- ano clean
- #- cd DualVNH5019MotorShieldMod3 && ano build --board-model mega --source-dir . --cpu atmega2560
- - ls -alF
- - arduino --verify --board arduino:avr:uno $PWD/examples/Demo/Demo.ino
+ - platformio ci --lib="." --board=uno --board=mega
+
+
+ #- arduino --verify --board arduino:avr:uno $PWD/examples/Demo/Demo.ino
  #- arduino --verify --board arduino:avr:mega $PWD/examples/Demo/Demo.ino
- - arduino --verify --board arduino:avr:uno $PWD/examples/Test_Motors/Test_Motors.ino
+ #- arduino --verify --board arduino:avr:uno $PWD/examples/Test_Motors/Test_Motors.ino
  #- arduino --verify --board arduino:avr:mega $PWD/examples/Demo/Demo.ino
