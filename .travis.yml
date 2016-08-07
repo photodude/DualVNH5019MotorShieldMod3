@@ -10,14 +10,14 @@ cache:
   - "~/.platformio"
 
 env:
- - PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Demo/Demo.ino
- - PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Test_Motors/Test_Motors.ino
+ - PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Demo/Demo.ino PLATFORMIO_BUILD_FLAGS=" -I/DualVNH5019MotorShieldMod3"
+ - PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Test_Motors/Test_Motors.ino PLATFORMIO_BUILD_FLAGS=" -I/DualVNH5019MotorShieldMod3"
 
 install:
  - pip install -U platformio
 
 script:
- - platformio ci --lib="." --lib="DualVNH5019MotorShieldMod3" --board=uno --board=megaatmega2560
+ - platformio ci --lib="." --board=uno --board=megaatmega2560
 
 
  #- arduino --verify --board arduino:avr:uno $PWD/examples/Demo/Demo.ino
