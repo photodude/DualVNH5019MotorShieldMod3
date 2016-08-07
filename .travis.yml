@@ -17,7 +17,7 @@ install:
  - pip install -U platformio
 
 script:
- - platformio ci -Ldir DualVNH5019MotorShieldMod3 --lib="." --board=uno --board=megaatmega2560
+ - platformio ci -Ldir="DualVNH5019MotorShieldMod3" --lib="." --board=uno --board=megaatmega2560
 
 
  #- arduino --verify --board arduino:avr:uno $PWD/examples/Demo/Demo.ino
