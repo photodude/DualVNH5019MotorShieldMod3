@@ -12,22 +12,22 @@ DualVNH5019MotorShieldMod3 md;//Use default pins
 //stop if fault methods
 void stopIfFault()
 {
-  if (getM1Fault())
+  if (md.getM1Fault())
   {
     Serial.println("M1 fault");
     while(1);
   }
-  if (getM2Fault())
+  if (md.getM2Fault())
   {
     Serial.println("M2 fault");
     while(1);
   }
-    if (getM3Fault())
+    if (md.getM3Fault())
   {
     Serial.println("M3 fault");
     while(1);
   }
-    if (getM4Fault())
+    if (md.getM4Fault())
   {
     Serial.println("M4 fault");
     while(1);
