@@ -8,6 +8,7 @@ cache:
     - "~/.platformio"
 
 matrix:
+  fast_finish: true
   include:
     - python: "2.7"
       env:
@@ -28,8 +29,10 @@ matrix:
       env:
         - PLATFORMIO_CI_EXTRA_ARGS="--board=uno" PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Test_Motors/Test_Motors.ino
   allow_failures:
-    - env: PLATFORMIO_CI_EXTRA_ARGS="--board=uno" PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Demo/Demo.ino
-    - env: PLATFORMIO_CI_EXTRA_ARGS="--board=uno" PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Test_Motors/Test_Motors.ino
+    - python: "2.7"
+      env: PLATFORMIO_CI_EXTRA_ARGS="--board=uno" PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Demo/Demo.ino
+    - python: "2.7"
+      env: PLATFORMIO_CI_EXTRA_ARGS="--board=uno" PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Test_Motors/Test_Motors.ino
 
 install:
   - pip install -U platformio
