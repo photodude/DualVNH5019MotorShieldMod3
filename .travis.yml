@@ -1,23 +1,30 @@
 # Test build your arduino libraries with travis and Arturo
 language: python
-python:
- - "2.7"
 
 # Cache PlatformIO packages using Travis CI container-based infrastructure
 sudo: false
 cache:
- directories:
-  - "~/.platformio"
+  directories:
+    - "~/.platformio"
 
-env:
- - PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Demo/Demo.ino
- - PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Test_Motors/Test_Motors.ino
+matrix:
+  include:
+    python: "2.7"
+    env:
+      - PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Demo/Demo.ino PLATFORMIO_CI_EXTRA_ARGS="--board=megaatmega2560"
+      - PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Test_Motors/Test_Motors.ino PLATFORMIO_CI_EXTRA_ARGS="--board=megaatmega2560"
+    python: "2.7"
+    env:
+      - PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Demo/Demo.ino PLATFORMIO_CI_EXTRA_ARGS="--board=due"
+      - PLATFORMIO_CI_SRC=DualVNH5019MotorShieldMod3/examples/Test_Motors/Test_Motors.ino PLATFORMIO_CI_EXTRA_ARGS="--board=due"
+  allow_failures:
+    - PLATFORMIO_CI_EXTRA_ARGS="--board=due"
 
 install:
- - pip install -U platformio
+  - pip install -U platformio
 
 script:
- - platformio ci --lib="DualVNH5019MotorShieldMod3" --board=megaatmega2560
+  - platformio ci --lib="DualVNH5019MotorShieldMod3" $PLATFORMIO_CI_EXTRA_ARGS
 
 
  #- arduino --verify --board arduino:avr:uno $PWD/examples/Demo/Demo.ino
