@@ -10,22 +10,12 @@ cache:
 matrix:
   fast_finish: true
   include:
-    - python: "2.7"
-      env:
-        - BOARD=megaatmega2560
-    - python: "2.7"
-      env:
-        - BOARD=due
-    - python: "2.7"
-      env:
-        - BOARD=leonardo
-    - python: "2.7"
-      env:
-        - BOARD=uno
+    - env: BOARD=megaatmega2560
+    - env: BOARD=due
+    - env: BOARD=leonardo
+    - env: BOARD=uno
   allow_failures:
-    - python: "2.7"
-      env:
-        - BOARD=uno
+    - env: BOARD=uno
 
 install:
   - pip install -U platformio
