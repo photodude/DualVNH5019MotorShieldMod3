@@ -21,7 +21,6 @@ install:
   - pip install -U platformio
 
 script:
-  - cd DualVNH5019MotorShieldMod3
   - for e in examples/*; do
       platformio ci --board=$BOARD --lib=. $e/*;
     done
