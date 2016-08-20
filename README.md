@@ -1,9 +1,9 @@
 # Arduino library for the running two Pololu Dual VNH5019 Motor Driver Shields on an Arduino Mega
 ===============================================================================================
 
-Version: 2.0.0.dualsheilds
-Release Date: 2016-08-20
-[www.pololu.com](http://www.pololu.com/)
+Version: 2.0.0.dualsheilds<br>
+Release Date: 2016-08-20<br>
+[www.pololu.com](http://www.pololu.com/)<br>
 [![Build Status](https://travis-ci.org/photodude/DualVNH5019MotorShieldMod3.svg?branch=master)](https://travis-ci.org/photodude/DualVNH5019MotorShieldMod3)
 
 ## Summary
