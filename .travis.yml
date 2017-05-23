@@ -21,6 +21,7 @@ install:
   - pip install -U platformio
 
 script:
-  - for e in examples/*; do
-      platformio ci --board=$BOARD --lib=. $e/*;
-    done
+- set -eo pipefail;
+  for e in examples/*; do
+    platformio ci --board=$BOARD --lib=. $e/*;
+  done
