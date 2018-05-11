@@ -5,7 +5,7 @@
   #define DUALVNH5019MOTORSHIELD_TIMER1_AVAILABLE
 #endif
 
-//#ifndef (__AVR_ATmega1280__) || ndef(__AVR_ATmega2560__)
+//#ifndef (__AVR_ATmega1280__) || ifndef(__AVR_ATmega2560__)
 //#error "This library only supports Arduino Mega boards."
 //#endif
 
