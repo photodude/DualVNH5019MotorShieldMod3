@@ -14,55 +14,55 @@ class DualVNH5019MotorShieldMod3
 
 	// Default pin selection.
     DualVNH5019MotorShieldMod3(unsigned char INA1,
-							   unsigned char INB1,
-							   unsigned char EN1DIAG1,
-							   unsigned char CS1,
-							   unsigned char INA2,
-							   unsigned char INB2,
-							   unsigned char EN2DIAG2,
-							   unsigned char CS2,
-							   unsigned char INA3,
-							   unsigned char INB3,
-							   unsigned char EN3DIAG3,
-							   unsigned char CS3,
-							   unsigned char INA4,
-							   unsigned char INB4,
-							   unsigned char EN4DIAG4,
-							   unsigned char CS4);
+                               unsigned char INB1,
+                               unsigned char EN1DIAG1,
+                               unsigned char CS1,
+                               unsigned char INA2,
+                               unsigned char INB2,
+                               unsigned char EN2DIAG2,
+                               unsigned char CS2,
+                               unsigned char INA3,
+                               unsigned char INB3,
+                               unsigned char EN3DIAG3,
+                               unsigned char CS3,
+                               unsigned char INA4,
+                               unsigned char INB4,
+                               unsigned char EN4DIAG4,
+                               unsigned char CS4);
 
 	// User-defined pin selection. 
     DualVNH5019MotorShieldMod3(unsigned char INA1,
-							   unsigned char INB1,
-							   unsigned char EN1DIAG1,
-							   unsigned char CS1,
-							   unsigned char INA2,
-							   unsigned char INB2,
-							   unsigned char EN2DIAG2,
-							   unsigned char CS2,
-							   unsigned char INA3,
-							   unsigned char INB3,
-							   unsigned char EN3DIAG3,
-							   unsigned char CS3,
-							   unsigned char INA4,
-							   unsigned char INB4,
-							   unsigned char EN4DIAG4,
-							   unsigned char CS4,
-							   unsigned char PWM1,
-							   unsigned char PWM2,
-							   unsigned char PWM3,
-							   unsigned char PWM4);
+                               unsigned char INB1,
+                               unsigned char EN1DIAG1,
+                               unsigned char CS1,
+                               unsigned char INA2,
+                               unsigned char INB2,
+                               unsigned char EN2DIAG2,
+                               unsigned char CS2,
+                               unsigned char INA3,
+                               unsigned char INB3,
+                               unsigned char EN3DIAG3,
+                               unsigned char CS3,
+                               unsigned char INA4,
+                               unsigned char INB4,
+                               unsigned char EN4DIAG4,
+                               unsigned char CS4,
+                               unsigned char PWM1,
+                               unsigned char PWM2,
+                               unsigned char PWM3,
+                               unsigned char PWM4);
 
 	// User-defined pin selection for only remapped motor shield 2.
 	DualVNH5019MotorShieldMod3(unsigned char INA3,
-							   unsigned char INB3,
-							   unsigned char EN3DIAG3,
-							   unsigned char CS3,
-							   unsigned char PWM3,
-							   unsigned char INA4,
-							   unsigned char INB4,
-							   unsigned char EN4DIAG4,
-							   unsigned char CS4,
-							   unsigned char PWM4);
+                               unsigned char INB3,
+                               unsigned char EN3DIAG3,
+                               unsigned char CS3,
+                               unsigned char PWM3,
+                               unsigned char INA4,
+                               unsigned char INB4,
+                               unsigned char EN4DIAG4,
+                               unsigned char CS4,
+                               unsigned char PWM4);
    
     // PUBLIC METHODS
     void init(); // Initialize TIMERS, set the PWM to 20kHZ.
@@ -76,9 +76,9 @@ class DualVNH5019MotorShieldMod3
     void setM4Speed(int speed); // Set speed for M4.
 
     void setSpeeds(int m1Speed,
-				   int m2Speed,
-				   int m3Speed,
-				   int m4Speed); // Set speed for M1, M2, M3 and M4.
+                   int m2Speed,
+                   int m3Speed,
+                   int m4Speed); // Set speed for M1, M2, M3 and M4.
 
     void setM1Brake(int brake); // Brake M1.
 
@@ -89,9 +89,9 @@ class DualVNH5019MotorShieldMod3
     void setM4Brake(int brake); // Brake M4.
 
     void setBrakes(int m1Brake,
-				   int m2Brake,
-				   int m3Brake,
-				   int m4Brake); // Brake M1, M2, M3 and M4.
+                   int m2Brake,
+                   int m3Brake,
+                   int m4Brake); // Brake M1, M2, M3 and M4.
 
     unsigned int getM1CurrentMilliamps(); // Get current reading for M1.
 
