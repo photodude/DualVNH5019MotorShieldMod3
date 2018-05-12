@@ -93,9 +93,7 @@ DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3(unsigned char INA1,
                                                        unsigned char CS4)
 {
   // Pin map
-  // PWM1 and PWM2 cannot be remapped because the library assumes PWM is on timer1
-  // PWM3 and PWM4 cannot be remapped because the library assumes PWM is on timer for pins 45,46
-  // motor sheild 1
+  // Motor sheild 1
   _INA1 = INA1;
   _INB1 = INB1;
   _EN1DIAG1 = EN1DIAG1;
@@ -146,6 +144,8 @@ DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3(unsigned char INA1,
                                                        unsigned char PWM3,
                                                        unsigned char PWM4)
 {
+  // PWM1 and PWM2 cannot be remapped because the library assumes PWM is on timer1
+  // PWM3 and PWM4 cannot be remapped because the library assumes PWM is on timer for pins 45,46
   // Custom Pin map Motor sheild 1
   _INA1 = INA1;
   _INB1 = INB1;
@@ -179,9 +179,6 @@ DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3(unsigned char INA1,
 void DualVNH5019MotorShieldMod3::init()
 {
 // Define pinMode for the pins motor shield 1 and set the frequency for timer1.
-// TCCR1A |= COM1A1; _PWM1 = &OCR1A; // PWM frequency calculation // 16MHz / 1 (prescaler) / 2 (phase-correct) / 400 (top) = 20kHz
-// TCCR1A |= COM1B1; _PWM2 = &OCR1B; // PWM frequency calculation // 16MHz / 1 (prescaler) / 2 (phase-correct) / 400 (top) = 20kHz
-
   pinMode(_INA1,OUTPUT);
   pinMode(_INB1,OUTPUT);
   pinMode(_PWM1,OUTPUT);
@@ -193,10 +190,24 @@ void DualVNH5019MotorShieldMod3::init()
   pinMode(_EN2DIAG2,INPUT);
   pinMode(_CS2,INPUT);
 
-// Define pinMode for the pins motor shield2 and set the frequency for timer 5.
-// TCCR5A |= COM5B1; _PWM3 = &OCR5B; // PWM frequency calculation // 16MHz / 1 (prescaler) / 2 (phase-correct) / 400 (top) = 20kHz
-// TCCR5A |= COM5A1; _PWM4 = &OCR5A; // PWM frequency calculation // 16MHz / 1 (prescaler) / 2 (phase-correct) / 400 (top) = 20kHz
+  #ifdef DUALVNH5019MOTORSHIELD_TIMER1_AVAILABLE
+    if (_PWM1 == _PWM1_TIMER1_PIN && _PWM2 == _PWM2_TIMER1_PIN)
+    {
+      // Timer 1 configuration
+      // prescaler: clockI/O / 1
+      // outputs enabled
+      // phase-correct PWM
+      // top of 400
+      //
+      // PWM frequency calculation
+      // 16MHz / 1 (prescaler) / 2 (phase-correct) / 400 (top) = 20kHz
+      TCCR1A = 0b10100000;
+      TCCR1B = 0b00010001;
+      ICR1 = 400;
+    }
+  #endif
 
+// Define pinMode for the pins motor shield2 and set the frequency for timer 5.
   pinMode(_INA3,OUTPUT);
   pinMode(_INB3,OUTPUT);
   pinMode(_PWM3,OUTPUT);
@@ -207,6 +218,23 @@ void DualVNH5019MotorShieldMod3::init()
   pinMode(_PWM4,OUTPUT);
   pinMode(_EN4DIAG4,INPUT);
   pinMode(_CS4,INPUT);
+
+  #ifdef DUALVNH5019MOTORSHIELD_TIMER5_AVAILABLE
+    if (_PWM3 == _PWM3_TIMER5_PIN && _PWM4 == _PWM4_TIMER5_PIN)
+    {
+      // Timer 5 configuration
+      // prescaler: clockI/O / 1
+      // outputs enabled
+      // phase-correct PWM
+      // top of 400
+      //
+      // PWM frequency calculation
+      // 16MHz / 1 (prescaler) / 2 (phase-correct) / 400 (top) = 20kHz
+      TCCR5A = 0b10100000;
+      TCCR5B = 0b00010001;
+      ICR5 = 400;
+    }
+  #endif
 }
 
 // Set speed for motor 1, speed is a number betwenn -400 and 400
@@ -225,7 +253,18 @@ void DualVNH5019MotorShieldMod3::setM1Speed(int speed)
     speed = 400;
   }
 
-  analogWrite(_PWM1,speed * 51 / 80); // Default to using analogWrite, mapping 400 to 255
+  #ifdef DUALVNH5019MOTORSHIELD_TIMER1_AVAILABLE
+    if (_PWM1 == _PWM1_TIMER1_PIN && _PWM2 == _PWM2_TIMER1_PIN)
+    {
+      OCR1A = speed;
+    }
+    else
+    {
+      analogWrite(_PWM1,speed * 51 / 80); // map 400 to 255
+    }
+  #else
+    analogWrite(_PWM1,speed * 51 / 80); // map 400 to 255
+  #endif
 
   if (speed == 0)
   {
@@ -260,7 +299,18 @@ void DualVNH5019MotorShieldMod3::setM2Speed(int speed)
     speed = 400;
   }
 
-  analogWrite(_PWM2,speed * 51 / 80); // Default to using analogWrite, mapping 400 to 255
+  #ifdef DUALVNH5019MOTORSHIELD_TIMER1_AVAILABLE
+    if (_PWM1 == _PWM1_TIMER1_PIN && _PWM2 == _PWM2_TIMER1_PIN)
+    {
+      OCR1B = speed;
+    }
+    else
+    {
+      analogWrite(_PWM2,speed * 51 / 80); // map 400 to 255
+    }
+  #else
+    analogWrite(_PWM2,speed * 51 / 80); // map 400 to 255
+  #endif
 
   if (speed == 0)
   {
@@ -295,7 +345,18 @@ void DualVNH5019MotorShieldMod3::setM3Speed(int speed)
     speed = 400;
   }
 
-  analogWrite(_PWM3,speed * 51 / 80); // Default to using analogWrite, mapping 400 to 255
+  #ifdef DUALVNH5019MOTORSHIELD_TIMER5_AVAILABLE
+    if (_PWM3 == _PWM3_TIMER5_PIN && _PWM4 == _PWM4_TIMER5_PIN)
+    {
+      OCR5B = speed;
+    }
+    else
+    {
+      analogWrite(_PWM3,speed * 51 / 80); // map 400 to 255
+    }
+  #else
+    analogWrite(_PWM3,speed * 51 / 80); // map 400 to 255
+  #endif
 
   if (speed == 0)
   {
@@ -330,7 +391,18 @@ void DualVNH5019MotorShieldMod3::setM4Speed(int speed)
     speed = 400;
   }
 
-  analogWrite(_PWM4,speed * 51 / 80); // Default to using analogWrite, mapping 400 to 255
+  #ifdef DUALVNH5019MOTORSHIELD_TIMER5_AVAILABLE
+    if (_PWM3 == _PWM3_TIMER5_PIN && _PWM4 == _PWM4_TIMER5_PIN)
+    {
+      OCR5B = speed;
+    }
+    else
+    {
+      analogWrite(_PWM4,speed * 51 / 80); // map 400 to 255
+    }
+  #else
+    analogWrite(_PWM4,speed * 51 / 80); // map 400 to 255
+  #endif
 
   if (speed == 0)
   {
@@ -377,7 +449,19 @@ void DualVNH5019MotorShieldMod3::setM1Brake(int brake)
 
   digitalWrite(_INA1, LOW);
   digitalWrite(_INB1, LOW);
-  analogWrite(_PWM1,brake * 51 / 80); // Default to using analogWrite, mapping 400 to 255
+
+  #ifdef DUALVNH5019MOTORSHIELD_TIMER1_AVAILABLE
+    if (_PWM1 == _PWM1_TIMER1_PIN && _PWM2 == _PWM2_TIMER1_PIN)
+    {
+      OCR1A = brake;
+    }
+    else
+    {
+      analogWrite(_PWM1,brake * 51 / 80); // map 400 to 255
+    }
+  #else
+    analogWrite(_PWM1,brake * 51 / 80); // map 400 to 255
+  #endif
 }
 
 // Brake motor 2, brake is a number between 0 and 400
@@ -396,7 +480,19 @@ void DualVNH5019MotorShieldMod3::setM2Brake(int brake)
 
   digitalWrite(_INA2, LOW);
   digitalWrite(_INB2, LOW);
-  analogWrite(_PWM2,brake * 51 / 80); // Default to using analogWrite, mapping 400 to 255
+
+  #ifdef DUALVNH5019MOTORSHIELD_TIMER1_AVAILABLE
+    if (_PWM1 == _PWM1_TIMER1_PIN && _PWM2 == _PWM2_TIMER1_PIN)
+    {
+      OCR1B = brake;
+    }
+    else
+    {
+      analogWrite(_PWM2,brake * 51 / 80); // map 400 to 255
+    }
+  #else
+    analogWrite(_PWM2,brake * 51 / 80); // map 400 to 255
+  #endif
 }
 
 // Brake motor 3, brake is a number between 0 and 400
@@ -415,7 +511,19 @@ void DualVNH5019MotorShieldMod3::setM3Brake(int brake)
 
   digitalWrite(_INA3, LOW);
   digitalWrite(_INB3, LOW);
-  analogWrite(_PWM3,brake * 51 / 80); // Default to using analogWrite, mapping 400 to 255
+
+  #ifdef DUALVNH5019MOTORSHIELD_TIMER5_AVAILABLE
+    if (_PWM3 == _PWM3_TIMER5_PIN && _PWM3 == _PWM3_TIMER5_PIN)
+    {
+      OCR5B = brake;
+    }
+    else
+    {
+      analogWrite(_PWM3,brake * 51 / 80); // map 400 to 255
+    }
+  #else
+    analogWrite(_PWM3,brake * 51 / 80); // map 400 to 255
+  #endif
 }
 
 // Brake motor 4, brake is a number between 0 and 400
@@ -434,7 +542,19 @@ void DualVNH5019MotorShieldMod3::setM4Brake(int brake)
 
   digitalWrite(_INA4, LOW);
   digitalWrite(_INB4, LOW);
-  analogWrite(_PWM4,brake * 51 / 80); // Default to using analogWrite, mapping 400 to 255
+
+  #ifdef DUALVNH5019MOTORSHIELD_TIMER5_AVAILABLE
+    if (_PWM3 == _PWM3_TIMER5_PIN && _PWM3 == _PWM3_TIMER5_PIN)
+    {
+      OCR5B = brake;
+    }
+    else
+    {
+      analogWrite(_PWM4,brake * 51 / 80); // map 400 to 255
+    }
+  #else
+    analogWrite(_PWM4,brake * 51 / 80); // map 400 to 255
+  #endif
 }
 
 // Brake motor 1, 2, 3, and 4, brake is a number between 0 and 400
