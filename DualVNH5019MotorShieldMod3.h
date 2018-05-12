@@ -5,11 +5,19 @@
   #define DUALVNH5019MOTORSHIELD_TIMER1_AVAILABLE
 #endif
 
-//#ifndef (__AVR_ATmega1280__) || ifndef(__AVR_ATmega2560__)
-//#error "This library only supports Arduino Mega boards."
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+  #define DUALVNH5019MOTORSHIELD_TIMER5_AVAILABLE
+#endif
+
+//#if !defined(__AVR_ATmega1280__) || !defined(__AVR_ATmega2560__)
+//  #error "This library only supports Arduino Mega boards."
 //#endif
 
-#include <Arduino.h>
+#if (ARDUINO >= 100)
+ #include "Arduino.h"
+#else
+ #include "WProgram.h"
+#endif
 
 class DualVNH5019MotorShieldMod3
 {
@@ -17,7 +25,7 @@ class DualVNH5019MotorShieldMod3
     // CONSTRUCTORS
     DualVNH5019MotorShieldMod3();
 
-	// Default pin selection.
+    // Default pin selection.
     DualVNH5019MotorShieldMod3(unsigned char INA1,
                                unsigned char INB1,
                                unsigned char EN1DIAG1,
@@ -35,7 +43,7 @@ class DualVNH5019MotorShieldMod3
                                unsigned char EN4DIAG4,
                                unsigned char CS4);
 
-	// User-defined pin selection. 
+    // User-defined pin selection. 
     DualVNH5019MotorShieldMod3(unsigned char INA1,
                                unsigned char INB1,
                                unsigned char EN1DIAG1,
@@ -57,8 +65,8 @@ class DualVNH5019MotorShieldMod3
                                unsigned char PWM3,
                                unsigned char PWM4);
 
-	// User-defined pin selection for only remapped motor shield 2.
-	DualVNH5019MotorShieldMod3(unsigned char INA3,
+    // User-defined pin selection for only remapped motor shield 2.
+    DualVNH5019MotorShieldMod3(unsigned char INA3,
                                unsigned char INB3,
                                unsigned char EN3DIAG3,
                                unsigned char CS3,
