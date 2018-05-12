@@ -123,16 +123,16 @@ Set brake for motor 4. Brake should be between 0 and 400. 0 corresponds to full 
 Set brake for motor 1, 2,3 4.
 
 - `unsigned int getM1CurrentMilliamps()`  
-Returns current reading from motor 1 in milliamps.
+Returns current reading from motor 1 in milliamps.  See the notes in the "Current readings" section below.
 
 - `unsigned int getM2CurrentMilliamps()`  
-Returns current reading from motor 2 in milliamps.
+Returns current reading from motor 2 in milliamps.  See the notes in the "Current readings" section below.
 
 - `unsigned int getM3CurrentMilliamps()`  
-Returns current reading from motor 3 in milliamps.
+Returns current reading from motor 3 in milliamps.  See the notes in the "Current readings" section below.
 
 - `unsigned int getM4CurrentMilliamps()`  
-Returns current reading from motor 4 in milliamps.
+Returns current reading from motor 4 in milliamps.  See the notes in the "Current readings" section below.
 
 - `unsigned char getM1Fault()`  
 Returns 1 if there is a fault on motor driver 1, 0 if no fault.
@@ -146,9 +146,18 @@ Returns 1 if there is a fault on motor driver 3, 0 if no fault.
 - `unsigned char getM4Fault()`  
 Returns 1 if there is a fault on motor driver 4, 0 if no fault.
 
+### Current readings
+
+The current readings returned by `getM1CurrentMilliamps`, `getM2CurrentMilliamps`, `getM3CurrentMilliamps` and
+`getM4CurrentMilliamps` will be noisy and unreliable if you are using a PWM frequency below about 5&nbsp;kHz.  We expect these readings to work fine if you are using a board based on the ATmega168, ATmega328P, or ATmega32U4, since this library uses 20&nbsp;kHz hardware PWM on those boards.
+
+On other boards, this library uses `analogWrite` to generate PWM signals, which usually means that the PWM frequency will be too low to
+get reliable current measurements.  If `analogWrite` uses a frequency of 490&nbsp;Hz or more on your board, you can add a 1&nbsp;&micro;F (or larger) capacitor between each current sense line you are using and GND.  To make `getM1CurrentMilliamps` work well, you would add the capacitor between M1CS and GND.  To make `getM2CurrentMilliamps` work well, you would add the capacitor between M2CS and GND.
+
 Version History
 ---------------
 
+-   3.0.0.dualshields (2018-05-12): Allow PWM remapping (use analogWrite if PWM pins remapped). Follows PWM remapping changes in source library pololu/dual-vnh5019-motor-shield, possibly backwards compatable change to allow use with old versions of the Arduino IDE 
 -   2.0.0.dualshields (2016-08-20): Updated library to work with the Arduino Library Manager
 -   1.3.5.dualshields (2016-08-10): Add continuous integration testing
 -   1.2.5.dualshields (2015-04-18): Fixed a bug that was introduced in 1.2.4.dualshields
@@ -158,7 +167,7 @@ Version History
 -   1.2.2 (2014-03-18): Add keywords.txt file. Thanks eatonphil.
 -   1.2.1 (2013-01-06): Fixed a bug in setM2Speed that was introduced in 1.2.0.
 -   1.2.0 (2012-12-26): Changes the behavior of the library at speed 0 so that it makes the motor coast regardless of which direction the motor is spinning.
--   1.1.0 (2011-12-15): Arduino 1.0 compatibility.
+-   1.1.0 (2011-12-15): Arduino IDE 1.0 compatibility.
 -   1.0.1 (2011-11-07): Adds support for Arduinos not based on ATmega168/328.
 -   1.0.0 (2011-10-28): Original release.
 
