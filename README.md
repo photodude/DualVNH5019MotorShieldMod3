@@ -1,8 +1,8 @@
 # Arduino library for the running two Pololu Dual VNH5019 Motor Driver Shields on an Arduino Mega
 ===============================================================================================
 
-Version: 3.0.0.dualsheilds<br>
-Release Date: 2018-05-12<br>
+Version: 3.0.1-dualsheilds<br>
+Release Date: 2018-06-14<br>
 [www.pololu.com](http://www.pololu.com/)<br>
 [![Build Status](https://travis-ci.org/photodude/DualVNH5019MotorShieldMod3.svg?branch=master)](https://travis-ci.org/photodude/DualVNH5019MotorShieldMod3)
 
@@ -156,7 +156,7 @@ get reliable current measurements.  If `analogWrite` uses a frequency of 490&nbs
 
 Version History
 ---------------
-
+-   3.0.1-dualshields (2018-06-14): Fix Semver naming for Arduino Library Manager
 -   3.0.0.dualshields (2018-05-12): Allow PWM remapping (use analogWrite if PWM pins remapped). Follows PWM remapping changes in source library pololu/dual-vnh5019-motor-shield, possibly backwards compatable change to allow use with old versions of the Arduino IDE 
 -   2.0.0.dualshields (2016-08-20): Updated library to work with the Arduino Library Manager
 -   1.3.5.dualshields (2016-08-10): Add continuous integration testing
