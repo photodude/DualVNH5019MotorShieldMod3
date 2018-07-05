@@ -8,21 +8,21 @@ DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3()
   _INA1 = 2;
   _INB1 = 4;
   _EN1DIAG1 = 6;
-  _CS1 = A0; //analog 0 pin
+  _CS1 = A0; // Analog 0 pin
   _INA2 = 7;
   _INB2 = 8;
   _EN2DIAG2 = 12;
-  _CS2 = A1; //analog 1 pin
+  _CS2 = A1; // Analog 1 pin
 
  // Default Pin map motor sheild 2
   _INA3 = 24;
   _INB3 = 26;
   _EN3DIAG3 = 22;
-  _CS3 = A8; // analog 8 pin
+  _CS3 = A8; // Analog 8 pin
   _INA4 = 25;
   _INB4 = 27;
   _EN4DIAG4 = 23;
-  _CS4 = 9; //analog 9 pin
+  _CS4 = A9; // Analog 9 pin
 
   // Default pwm motor sheild 1
   _PWM1 = 9;
@@ -49,11 +49,11 @@ DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3(unsigned char INA3,
   _INA1 = 2;
   _INB1 = 4;
   _EN1DIAG1 = 6;
-  _CS1 = A0; //analog 0 pin
+  _CS1 = A0; // Analog 0 pin
   _INA2 = 7;
   _INB2 = 8;
   _EN2DIAG2 = 12;
-  _CS2 = A1; //analog 1 pin
+  _CS2 = A1; // Analog 1 pin
 
  // Custom Pin map motor sheild 2
   _INA3 = INA3;
