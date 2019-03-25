@@ -9,7 +9,7 @@ Release Date: 2018-12-03<br>
 ## Summary
 -------
 
-This is a custom library for the [Arduino](http://www.pololu.com/catalog/product/2191) that interfaces with two Pololu [Dual VNH5019 Motor Driver Shields](http://www.pololu.com/catalog/product/2507) with an Arduino Mega. It makes it simple to drive four brushed, DC motors from 2 sheilds on an Arduino Mega.
+This is a custom library for the [Arduino](http://www.pololu.com/catalog/product/2191) that interfaces with two Pololu [Dual VNH5019 Motor Driver Shields](http://www.pololu.com/catalog/product/2507) with an Arduino Mega. It makes it simple to drive four brushed, DC motors from 2 shields on an Arduino Mega.
 
 ## Supported platforms
 
