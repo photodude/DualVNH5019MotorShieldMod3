@@ -190,7 +190,7 @@ and GND.  To make `getM1CurrentMilliamps` work well, you would add the
 capacitor between M1CS and GND.  To make `getM2CurrentMilliamps` work
 well, you would add the capacitor between M2CS and GND.
 
-### Notes about timers:
+### Notes about timers and conflicts:
 -------------------
 
 -   Timer0 is used by the functions millis(), delay(), micros() and delayMicroseconds(),
@@ -225,4 +225,4 @@ well, you would add the capacitor between M2CS and GND.
     -   timer 3 —– pin 2, 3, 5
     -   timer 4 —– pin 6, 7, 8
     -   timer 5 —– pin 44, 45, 46 (servo library)
--   [You can manually implement a sudo PWM on any pin by repeatedly turning the pin on and off for the desired times](http://www.arduino.cc/en/Tutorial/SecretsOfArduinoPWM)
+-   [You can manually implement a sudo PWM on any digital pin by repeatedly turning the pin on and off for the desired times](http://www.arduino.cc/en/Tutorial/SecretsOfArduinoPWM)
