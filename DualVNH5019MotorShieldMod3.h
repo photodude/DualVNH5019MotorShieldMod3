@@ -173,7 +173,7 @@ class DualVNH5019MotorShieldMod3
     unsigned char _PWM4;
     #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
         // Code in here will only be compiled if an Arduino Mega is used.
-        static const unsigned char _PWM5_TIMER5_PIN = 46;
+        static const unsigned char _PWM4_TIMER5_PIN = 46;
     #endif
     unsigned char _EN4DIAG4;
     unsigned char _CS4;
