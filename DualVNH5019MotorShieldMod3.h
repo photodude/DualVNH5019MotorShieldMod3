@@ -1,11 +1,17 @@
 #pragma once
 
 #if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__) || \
-    defined(__AVR_ATmega328PB__) || defined (__AVR_ATmega32U4__)
+    defined(__AVR_ATmega328PB__) || defined (__AVR_ATmega32U4__) || \
+    defined(__AVR_ATmega16U4__) || defined(__AVR_ATmega1280__) || \
+    defined(__AVR_ATmega2560__)
+  // Timers generally available for all boards.
   #define DUALVNH5019MOTORSHIELD_TIMER1_AVAILABLE
 #endif
 
 #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+  // Additional timers for an Arduino Mega.
+  #define DUALVNH5019MOTORSHIELD_TIMER3_AVAILABLE
+  #define DUALVNH5019MOTORSHIELD_TIMER4_AVAILABLE
   #define DUALVNH5019MOTORSHIELD_TIMER5_AVAILABLE
 #endif
 
@@ -126,25 +132,49 @@ class DualVNH5019MotorShieldMod3
     unsigned char _INA1;
     unsigned char _INB1;
     unsigned char _PWM1;
-    static const unsigned char _PWM1_TIMER1_PIN = 9;
+    #if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__) || \
+        defined(__AVR_ATmega328PB__) || defined (__AVR_ATmega32U4__) || \
+        defined(__AVR_ATmega16U4__)
+        // Code in here will only be compiled if an Arduino Uno (or older), or Arduino Leonardo is used.
+        static const unsigned char _PWM1_TIMER1_PIN = 9;
+    #endif
+    #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+        // Code in here will only be compiled if an Arduino Mega is used.
+        static const unsigned char _PWM1_TIMER1_PIN = 11;
+    #endif
     unsigned char _EN1DIAG1;
     unsigned char _CS1;
     unsigned char _INA2;
     unsigned char _INB2;
     unsigned char _PWM2;
-    static const unsigned char _PWM2_TIMER1_PIN = 10;
+    #if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__) || \
+        defined(__AVR_ATmega328PB__) || defined (__AVR_ATmega32U4__) || \
+        defined(__AVR_ATmega16U4__)
+        // Code in here will only be compiled if an Arduino Uno (or older), or Arduino Leonardo is used.
+        static const unsigned char _PWM2_TIMER1_PIN = 10;
+    #endif
+    #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+        // Code in here will only be compiled if an Arduino Mega is used.
+        static const unsigned char _PWM2_TIMER1_PIN = 12;
+    #endif
     unsigned char _EN2DIAG2;
     unsigned char _CS2;
     unsigned char _INA3;
     unsigned char _INB3;
     unsigned char _PWM3;
-    static const unsigned char _PWM3_TIMER5_PIN = 45;
+    #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+        // Code in here will only be compiled if an Arduino Mega is used.
+        static const unsigned char _PWM3_TIMER5_PIN = 45;
+    #endif
     unsigned char _EN3DIAG3;
     unsigned char _CS3;
     unsigned char _INA4;
     unsigned char _INB4;
     unsigned char _PWM4;
-    static const unsigned char _PWM4_TIMER5_PIN = 46;
+    #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+        // Code in here will only be compiled if an Arduino Mega is used.
+        static const unsigned char _PWM5_TIMER5_PIN = 46;
+    #endif
     unsigned char _EN4DIAG4;
     unsigned char _CS4;
 };
