@@ -513,7 +513,7 @@ void DualVNH5019MotorShieldMod3::setM3Brake(int brake)
   digitalWrite(_INB3, LOW);
 
   #ifdef DUALVNH5019MOTORSHIELD_TIMER5_AVAILABLE
-    if (_PWM3 == _PWM3_TIMER5_PIN && _PWM3 == _PWM3_TIMER5_PIN)
+    if (_PWM3 == _PWM3_TIMER5_PIN && _PWM4 == _PWM4_TIMER5_PIN)
     {
       OCR5B = brake;
     }
@@ -544,7 +544,7 @@ void DualVNH5019MotorShieldMod3::setM4Brake(int brake)
   digitalWrite(_INB4, LOW);
 
   #ifdef DUALVNH5019MOTORSHIELD_TIMER5_AVAILABLE
-    if (_PWM3 == _PWM3_TIMER5_PIN && _PWM3 == _PWM3_TIMER5_PIN)
+    if (_PWM3 == _PWM3_TIMER5_PIN && _PWM4 == _PWM4_TIMER5_PIN)
     {
       OCR5B = brake;
     }
