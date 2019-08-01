@@ -18,19 +18,35 @@ DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3()
   _INA3 = 24;
   _INB3 = 26;
   _EN3DIAG3 = 22;
-  _CS3 = A8; // Analog 8 pin
+  _CS3 = A2; // Analog 2 pin
   _INA4 = 25;
   _INB4 = 27;
   _EN4DIAG4 = 23;
-  _CS4 = A9; // Analog 9 pin
+  _CS4 = A3; // Analog 3 pin
 
-  // Default pwm motor sheild 1
-  _PWM1 = 9;
-  _PWM2 = 10;
+   #if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__) || \
+      defined(__AVR_ATmega328PB__) || defined (__AVR_ATmega32U4__) || \
+      defined(__AVR_ATmega16U4__)
+      // Code in here will only be compiled if an Arduino Uno (or older), or Arduino Leonardo is used.
+      // Default pwm pins motor sheild 1
+      _PWM1 = 9;
+      _PWM2 = 10;
 
-  // Default pwm motor sheild 2
-  _PWM3 = 45;
-  _PWM4 = 46;  
+      // Default pwm pins motor sheild 2 (not actually using PWM but pseudo-PWM
+      _PWM3 = 3;
+      _PWM4 = 11;  
+  #endif
+
+  #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+      // Code in here will only be compiled if an Arduino Mega is used.
+      // Default pwm pins motor sheild 1
+      _PWM1 = 11;
+      _PWM2 = 12;
+
+      // Default pwm pins motor sheild 2
+      _PWM3 = 45;
+      _PWM4 = 46;  
+  #endif
 }
 
 //default pins for motor shield 1, custom pins for motor shield 2
@@ -65,11 +81,23 @@ DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3(unsigned char INA3,
   _EN4DIAG4 = EN4DIAG4;
   _CS4 = CS4;
 
-  // Default PWM motor sheild 1
-  _PWM1 = 9;
-  _PWM2 = 10;
+   #if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__) || \
+      defined(__AVR_ATmega328PB__) || defined (__AVR_ATmega32U4__) || \
+      defined(__AVR_ATmega16U4__)
+      // Code in here will only be compiled if an Arduino Uno (or older), or Arduino Leonardo is used.
+      // Default pwm motor sheild 1
+      _PWM1 = 9;
+      _PWM2 = 10;
+  #endif
 
-  // Default PWM motor sheild 2 
+  #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+      // Code in here will only be compiled if an Arduino Mega is used.
+      // Default pwm motor sheild 1
+      _PWM1 = 11;
+      _PWM2 = 12;
+  #endif
+
+  // Custom PWM motor sheild 2 pins from function parameters
   _PWM3 = PWM3;
   _PWM4 = PWM4;  
 }
@@ -113,13 +141,29 @@ DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3(unsigned char INA1,
   _EN4DIAG4 = EN4DIAG4;
   _CS4 = CS4;
 
-  // PWM Motor sheild 1
-  _PWM1 = 9;
-  _PWM2 = 10;
+   #if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__) || \
+      defined(__AVR_ATmega328PB__) || defined (__AVR_ATmega32U4__) || \
+      defined(__AVR_ATmega16U4__)
+      // Code in here will only be compiled if an Arduino Uno (or older), or Arduino Leonardo is used.
+      // Default pwm pins motor sheild 1
+      _PWM1 = 9;
+      _PWM2 = 10;
 
-  // PWM Motor sheild 2
-  _PWM3 = 45;
-  _PWM4 = 46;    
+      // Default pwm pins motor sheild 2 (not actually using PWM but pseudo-PWM
+      _PWM3 = 3;
+      _PWM4 = 11;  
+  #endif
+
+  #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+      // Code in here will only be compiled if an Arduino Mega is used.
+      // Default pwm pins motor sheild 1
+      _PWM1 = 11;
+      _PWM2 = 12;
+
+      // Default pwm pins motor sheild 2
+      _PWM3 = 45;
+      _PWM4 = 46;  
+  #endif    
 }
 
 // All custom pin settings
@@ -145,7 +189,7 @@ DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3(unsigned char INA1,
                                                        unsigned char PWM4)
 {
   // PWM1 and PWM2 cannot be remapped because the library assumes PWM is on timer1
-  // PWM3 and PWM4 cannot be remapped because the library assumes PWM is on timer for pins 45,46
+  // PWM3 and PWM4 cannot be remapped because the library assumes PWM is on timer5 for pins 45,46
   // Custom Pin map Motor sheild 1
   _INA1 = INA1;
   _INB1 = INB1;
@@ -166,11 +210,11 @@ DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3(unsigned char INA1,
   _EN4DIAG4 = EN4DIAG4;
   _CS4 = CS4;
  
- // Custom Pin map PWM Motor sheild 1
+ // Custom Pin map PWM Motor sheild 1 from function parameters
   _PWM1 = PWM1;
   _PWM2 = PWM2;
 
- // Custom Pin map Motor sheild 2
+ // Custom Pin map PWM Motor sheild 2 from function parameters
   _PWM3 = PWM3;
   _PWM4 = PWM4;  
 }
@@ -178,7 +222,7 @@ DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3(unsigned char INA1,
 // Public Methods //////////////////////////////////////////////////////////////
 void DualVNH5019MotorShieldMod3::init()
 {
-// Define pinMode for the pins motor shield 1 and set the frequency for timer1.
+// Define pinMode for the pins motor shield 1.
   pinMode(_INA1,OUTPUT);
   pinMode(_INB1,OUTPUT);
   pinMode(_PWM1,OUTPUT);
@@ -190,6 +234,7 @@ void DualVNH5019MotorShieldMod3::init()
   pinMode(_EN2DIAG2,INPUT);
   pinMode(_CS2,INPUT);
 
+  // Set the frequency for timer1, if used by code.
   #ifdef DUALVNH5019MOTORSHIELD_TIMER1_AVAILABLE
     if (_PWM1 == _PWM1_TIMER1_PIN && _PWM2 == _PWM2_TIMER1_PIN)
     {
@@ -207,7 +252,7 @@ void DualVNH5019MotorShieldMod3::init()
     }
   #endif
 
-// Define pinMode for the pins motor shield2 and set the frequency for timer 5.
+// Define pinMode for the pins motor shield2
   pinMode(_INA3,OUTPUT);
   pinMode(_INB3,OUTPUT);
   pinMode(_PWM3,OUTPUT);
@@ -219,6 +264,7 @@ void DualVNH5019MotorShieldMod3::init()
   pinMode(_EN4DIAG4,INPUT);
   pinMode(_CS4,INPUT);
 
+  // Set the frequency for timer 5, if used by code.
   #ifdef DUALVNH5019MOTORSHIELD_TIMER5_AVAILABLE
     if (_PWM3 == _PWM3_TIMER5_PIN && _PWM4 == _PWM4_TIMER5_PIN)
     {
