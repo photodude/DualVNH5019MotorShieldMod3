@@ -145,16 +145,17 @@ Returns 1 if there is a fault on motor driver 3, 0 if no fault.
 - `unsigned char getM4Fault()`  
 Returns 1 if there is a fault on motor driver 4, 0 if no fault.
 
-### Current readings
+### Current Readings
 
 The current readings returned by `getM1CurrentMilliamps`, `getM2CurrentMilliamps`, `getM3CurrentMilliamps` and
 `getM4CurrentMilliamps` will be noisy and unreliable if you are using a PWM frequency below about 5&nbsp;kHz.  We expect these readings to work fine if you haven't remapped the PWM pins and you are using a board based on the ATmega168, ATmega328P, ATmega328PB, ATmega32U4, ATmega1280, or ATmega2560 since this library uses 20&nbsp;kHz hardware PWM on those boards.
 
 On other boards, this library uses `analogWrite` to generate PWM signals, which usually means that the PWM frequency will be too low to
-get reliable current measurements.  If `analogWrite` uses a frequency of 490&nbsp;Hz or more on your board, you can add a 1&nbsp;&micro;F (or larger) capacitor between each current sense line you are using and GND.  To make `getM1CurrentMilliamps` work well, you would add the capacitor between M1CS and GND.  To make `getM2CurrentMilliamps` work well, you would add the capacitor between M2CS and GND.
+get reliable current measurements.  If `analogWrite` uses a frequency of 490&nbsp;Hz or more on your board, you can add a 1&nbsp;&micro;F (or larger) capacitor between each current sense line you are using and GND.  To make `getM1CurrentMilliamps` work well, you would add the capacitor between M1CS and GND.  To make `getM2CurrentMilliamps` work well, you would add the capacitor between M2CS and GND. To make `getM3CurrentMilliamps` work well, you would add the capacitor between M3CS and GND. To make `getM4CurrentMilliamps` work well, you would add the capacitor between M4CS and GND.
 
 Version History
 ---------------
+-   4.0.0-dualshields (2019-10-11): Fixes a number of problems with PWM for the default pins on Mega. More details in the release notes.
 -   2019-03-28 Now officially in the Arduino Library Manager
 -   3.0.2-dualshields (2018-12-02): Fix default pins for motor 2 _CS4
 -   3.0.1-dualshields (2018-06-14): Fix Semver naming for Arduino Library Manager
@@ -171,25 +172,6 @@ Version History
 -   1.1.0 (2011-12-15): Arduino IDE 1.0 compatibility.
 -   1.0.1 (2011-11-07): Adds support for Arduinos not based on ATmega168/328.
 -   1.0.0 (2011-10-28): Original release.
-
-### Current readings
--------------------
-
-The current readings returned by `getM1CurrentMilliamps` and
-`getM2CurrentMilliamps` will be noisy and unreliable if you are using
-a PWM frequency below about 5&nbsp;kHz.  We expect these readings to
-work fine if you are using a board based on the ATmega168, ATmega328P,
-or ATmega32U4, since this library uses 20&nbsp;kHz hardware PWM on
-those boards.
-
-On other boards, this library uses `analogWrite` to generate PWM
-signals, which usually means that the PWM frequency will be too low to
-get reliable current measurements.  If `analogWrite` uses a frequency
-of 490&nbsp;Hz or more on your board, you can add a 1&nbsp;&micro;F
-(or larger) capacitor between each current sense line you are using
-and GND.  To make `getM1CurrentMilliamps` work well, you would add the
-capacitor between M1CS and GND.  To make `getM2CurrentMilliamps` work
-well, you would add the capacitor between M2CS and GND.
 
 ### Notes about timers and conflicts:
 -------------------
