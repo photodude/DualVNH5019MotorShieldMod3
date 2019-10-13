@@ -394,7 +394,7 @@ void DualVNH5019MotorShieldMod3::setM4Speed(int speed)
   #ifdef DUALVNH5019MOTORSHIELD_TIMER5_AVAILABLE
     if (_PWM3 == _PWM3_TIMER5_PIN && _PWM4 == _PWM4_TIMER5_PIN)
     {
-      OCR5B = speed;
+      OCR5A = speed;
     }
     else
     {
@@ -546,7 +546,7 @@ void DualVNH5019MotorShieldMod3::setM4Brake(int brake)
   #ifdef DUALVNH5019MOTORSHIELD_TIMER5_AVAILABLE
     if (_PWM3 == _PWM3_TIMER5_PIN && _PWM4 == _PWM4_TIMER5_PIN)
     {
-      OCR5B = brake;
+      OCR5A = brake;
     }
     else
     {
