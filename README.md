@@ -1,15 +1,14 @@
 # Arduino library for the running two Pololu Dual VNH5019 Motor Driver Shields on an Arduino Mega
-===============================================================================================
 
-Version: 3.0.1-dualsheilds<br>
-Release Date: 2018-06-14<br>
+Version: 3.1.0-dualsheilds<br>
+Release Date: 2019-10-13<br>
 [www.pololu.com](http://www.pololu.com/)<br>
 [![Build Status](https://travis-ci.org/photodude/DualVNH5019MotorShieldMod3.svg?branch=master)](https://travis-ci.org/photodude/DualVNH5019MotorShieldMod3)
 
 ## Summary
 -------
 
-This is a custom library for the [Arduino](http://www.pololu.com/catalog/product/2191) that interfaces with two Pololu [Dual VNH5019 Motor Driver Shields](http://www.pololu.com/catalog/product/2507) with an Arduino Mega. It makes it simple to drive four brushed, DC motors from 2 sheilds on an Arduino Mega.
+This is a custom library for the [Arduino](http://www.pololu.com/catalog/product/2191) that interfaces with two Pololu [Dual VNH5019 Motor Driver Shields](http://www.pololu.com/catalog/product/2507) with an Arduino Mega. It makes it simple to drive four brushed, DC motors from 2 shields on an Arduino Mega.
 
 ## Supported platforms
 
@@ -146,16 +145,19 @@ Returns 1 if there is a fault on motor driver 3, 0 if no fault.
 - `unsigned char getM4Fault()`  
 Returns 1 if there is a fault on motor driver 4, 0 if no fault.
 
-### Current readings
+### Current Readings
 
 The current readings returned by `getM1CurrentMilliamps`, `getM2CurrentMilliamps`, `getM3CurrentMilliamps` and
 `getM4CurrentMilliamps` will be noisy and unreliable if you are using a PWM frequency below about 5&nbsp;kHz.  We expect these readings to work fine if you haven't remapped the PWM pins and you are using a board based on the ATmega168, ATmega328P, ATmega328PB, ATmega32U4, ATmega1280, or ATmega2560 since this library uses 20&nbsp;kHz hardware PWM on those boards.
 
 On other boards, this library uses `analogWrite` to generate PWM signals, which usually means that the PWM frequency will be too low to
-get reliable current measurements.  If `analogWrite` uses a frequency of 490&nbsp;Hz or more on your board, you can add a 1&nbsp;&micro;F (or larger) capacitor between each current sense line you are using and GND.  To make `getM1CurrentMilliamps` work well, you would add the capacitor between M1CS and GND.  To make `getM2CurrentMilliamps` work well, you would add the capacitor between M2CS and GND.
+get reliable current measurements.  If `analogWrite` uses a frequency of 490&nbsp;Hz or more on your board, you can add a 1&nbsp;&micro;F (or larger) capacitor between each current sense line you are using and GND.  To make `getM1CurrentMilliamps` work well, you would add the capacitor between M1CS and GND.  To make `getM2CurrentMilliamps` work well, you would add the capacitor between M2CS and GND. To make `getM3CurrentMilliamps` work well, you would add the capacitor between M3CS and GND. To make `getM4CurrentMilliamps` work well, you would add the capacitor between M4CS and GND.
 
 Version History
 ---------------
+-   3.1.0-dualshields (2019-10-13): Fixes a number of problems with PWM on Mega. More details in the release notes.
+-   2019-03-28 Now officially in the Arduino Library Manager
+-   3.0.2-dualshields (2018-12-02): Fix default pins for motor 2 _CS4
 -   3.0.1-dualshields (2018-06-14): Fix Semver naming for Arduino Library Manager
 -   3.0.0.dualshields (2018-05-12): Allow PWM remapping (use analogWrite if PWM pins remapped). Follows PWM remapping changes in source library pololu/dual-vnh5019-motor-shield, possibly backwards compatable change to allow use with old versions of the Arduino IDE 
 -   2.0.0.dualshields (2016-08-20): Updated library to work with the Arduino Library Manager
@@ -171,26 +173,7 @@ Version History
 -   1.0.1 (2011-11-07): Adds support for Arduinos not based on ATmega168/328.
 -   1.0.0 (2011-10-28): Original release.
 
-### Current readings
--------------------
-
-The current readings returned by `getM1CurrentMilliamps` and
-`getM2CurrentMilliamps` will be noisy and unreliable if you are using
-a PWM frequency below about 5&nbsp;kHz.  We expect these readings to
-work fine if you are using a board based on the ATmega168, ATmega328P,
-or ATmega32U4, since this library uses 20&nbsp;kHz hardware PWM on
-those boards.
-
-On other boards, this library uses `analogWrite` to generate PWM
-signals, which usually means that the PWM frequency will be too low to
-get reliable current measurements.  If `analogWrite` uses a frequency
-of 490&nbsp;Hz or more on your board, you can add a 1&nbsp;&micro;F
-(or larger) capacitor between each current sense line you are using
-and GND.  To make `getM1CurrentMilliamps` work well, you would add the
-capacitor between M1CS and GND.  To make `getM2CurrentMilliamps` work
-well, you would add the capacitor between M2CS and GND.
-
-### Notes about timers:
+### Notes about timers and conflicts:
 -------------------
 
 -   Timer0 is used by the functions millis(), delay(), micros() and delayMicroseconds(),
@@ -217,7 +200,15 @@ well, you would add the capacitor between M2CS and GND.
 -   The Uno has 3 Timers and 6 PWM output pins 3, 5, 6, 9, 10, and 11
     -   timer 0 —– Pins 5, 6 (time functions like millis(), and delay() )
     -   timer 1 —– Pins 9, 10 (servo library)
-    -   timer 2 —– Pins 11, 3
+    -   timer 2 —– Pins 11, 3 (tone(), notone() functions)
+
+| Uno Timer | Timer output OCRnx | Timer bit mode | PWM pin output |     Conflicts    |
+|:---------:|:------------------:|:--------------:|:--------------:|:----------------:|
+|  Timer 1  |        OCR1A       |     16 bit     |        9       |   servo library  |
+|  Timer 1  |        OCR1B       |     16 bit     |       10       |   servo library  |
+|  Timer 2  |        OCR2A       |      8 bit     |       11       | tone(), notone(), MOSI/SPI |
+|  Timer 2  |        OCR2B       |      8 bit     |        3       | tone(), notone() |
+
 -   The Arduino Mega has 6 timers and 15 PWM outputs pins 2 to 13 and 44 to 46
     -   timer 0 —– pin 4, 13 (time functions like millis(), and delay() )
     -   timer 1 —– pin 11, 12
@@ -225,4 +216,26 @@ well, you would add the capacitor between M2CS and GND.
     -   timer 3 —– pin 2, 3, 5
     -   timer 4 —– pin 6, 7, 8
     -   timer 5 —– pin 44, 45, 46 (servo library)
--   [You can manually implement a sudo PWM on any pin by repeatedly turning the pin on and off for the desired times](http://www.arduino.cc/en/Tutorial/SecretsOfArduinoPWM)
+
+| Mega Timer | Timer output OCRnx | Timer bit mode | PWM pin output |     Conflicts    |
+|:----------:|:------------------:|:-------------:|:--------------:|:----------------:|
+|   Timer 1  |        OCR1A       |     16 bit    |       11       |         -        |
+|   Timer 1  |        OCR1B       |     16 bit    |       12       |         -        |
+|   Timer 2  |        OCR2A       |     8 bit     |       10       | tone(), notone() |
+|   Timer 2  |        OCR2B       |     8 bit     |        9       | tone(), notone() |
+|   Timer 3  |        OCR3A       |     16 bit    |        5       |         -        |
+|   Timer 3  |        OCR3B       |     16 bit    |        2       |         -        |
+|   Timer 3  |        OCR3C       |     16 bit    |        3       |         -        |
+|   Timer 4  |        OCR4A       |     16 bit    |        6       |         -        |
+|   Timer 4  |        OCR4B       |     16 bit    |        7       |         -        |
+|   Timer 4  |        OCR4C       |     16 bit    |        8       |         -        |
+|   Timer 5  |        OCR5A       |     16 bit    |       46       | servo library    |
+|   Timer 5  |        OCR5B       |     16 bit    |       45       | servo library    |
+|   Timer 5  |        OCR5C       |     16 bit    |       44       | servo library    |
+
+-   The Arduino Leonardo has 4 timers and 7 PWM outputs 
+    -   timer 0 —– Pins 3, 11 (time functions like millis(), and delay() )
+    -   timer 1 —– Pins 9, 10 (servo library)
+    -   timer 3 —– pin 5
+    -   timer 4 —– pin 6,13
+-   [You can manually implement a sudo PWM on any digital pin by repeatedly turning the pin on and off for the desired times](http://www.arduino.cc/en/Tutorial/SecretsOfArduinoPWM)
