@@ -1,11 +1,17 @@
 #pragma once
 
 #if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__) || \
-    defined(__AVR_ATmega328PB__) || defined (__AVR_ATmega32U4__)
+    defined(__AVR_ATmega328PB__) || defined (__AVR_ATmega32U4__) || \
+    defined(__AVR_ATmega16U4__) || defined(__AVR_ATmega1280__) || \
+    defined(__AVR_ATmega2560__)
+  // Timers generally available for all boards.
   #define DUALVNH5019MOTORSHIELD_TIMER1_AVAILABLE
 #endif
 
 #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+  // Additional timers for an Arduino Mega.
+  #define DUALVNH5019MOTORSHIELD_TIMER3_AVAILABLE
+  #define DUALVNH5019MOTORSHIELD_TIMER4_AVAILABLE
   #define DUALVNH5019MOTORSHIELD_TIMER5_AVAILABLE
 #endif
 
