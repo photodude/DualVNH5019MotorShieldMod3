@@ -10,6 +10,7 @@
 
 #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
   // Additional timers for an Arduino Mega.
+  #define DUALVNH5019MOTORSHIELD_TIMER2_AVAILABLE
   #define DUALVNH5019MOTORSHIELD_TIMER3_AVAILABLE
   #define DUALVNH5019MOTORSHIELD_TIMER4_AVAILABLE
   #define DUALVNH5019MOTORSHIELD_TIMER5_AVAILABLE
@@ -132,13 +133,15 @@ class DualVNH5019MotorShieldMod3
     unsigned char _INA1;
     unsigned char _INB1;
     unsigned char _PWM1;
-    static const unsigned char _PWM1_TIMER1_PIN = 9;
+    static const unsigned char _PWM1_TIMER1_PIN = 9;  //Arduino Uno
+    static const unsigned char _PWM1_TIMER2_PIN = 9;  //Arduino Mega
     unsigned char _EN1DIAG1;
     unsigned char _CS1;
     unsigned char _INA2;
     unsigned char _INB2;
     unsigned char _PWM2;
-    static const unsigned char _PWM2_TIMER1_PIN = 10;
+    static const unsigned char _PWM2_TIMER1_PIN = 10;  //Arduino Uno
+    static const unsigned char _PWM2_TIMER2_PIN = 10;  //Arduino Mega
     unsigned char _EN2DIAG2;
     unsigned char _CS2;
     unsigned char _INA3;
