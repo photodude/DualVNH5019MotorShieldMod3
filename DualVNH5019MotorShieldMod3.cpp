@@ -144,8 +144,8 @@ DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3(unsigned char INA1,
                                                        unsigned char PWM3,
                                                        unsigned char PWM4)
 {
-  // PWM1 and PWM2 cannot be remapped because the library assumes PWM is on timer1
-  // PWM3 and PWM4 cannot be remapped because the library assumes PWM is on timer for pins 45,46
+  // PWM1 and PWM2 cannot be remapped because the library assumes PWM is on timer 1 or on timer 2
+  // PWM3 and PWM4 cannot be remapped because the library assumes PWM is on timer 5 for pins 45,46
   // Custom Pin map Motor sheild 1
   _INA1 = INA1;
   _INB1 = INB1;
@@ -178,7 +178,7 @@ DualVNH5019MotorShieldMod3::DualVNH5019MotorShieldMod3(unsigned char INA1,
 // Public Methods //////////////////////////////////////////////////////////////
 void DualVNH5019MotorShieldMod3::init()
 {
-// Define pinMode for the pins motor shield 1 and set the frequency for timer1.
+// Define pinMode for the pins motor shield 1 and set the frequency for Timer 1 or Timer 2.
   pinMode(_INA1,OUTPUT);
   pinMode(_INB1,OUTPUT);
   pinMode(_PWM1,OUTPUT);
