@@ -1,7 +1,7 @@
 # Arduino library for the running two Pololu Dual VNH5019 Motor Driver Shields on an Arduino Mega
 
-Version: 3.1.0-dualsheilds<br>
-Release Date: 2019-10-13<br>
+Version: 3.2.0-dualsheilds<br>
+Release Date: 2019-11-09<br>
 [www.pololu.com](http://www.pololu.com/)<br>
 [![Build Status](https://travis-ci.org/photodude/DualVNH5019MotorShieldMod3.svg?branch=master)](https://travis-ci.org/photodude/DualVNH5019MotorShieldMod3)
 
@@ -22,7 +22,10 @@ This library is designed to work with the Arduino IDE versions 1.6.x or later; w
 Two Dual VNH5019 Motor Driver Shield can be purchased on [Pololu’s website](http://www.pololu.com/catalog/product/2507). See the [motor shield user’s guide](http://www.pololu.com/docs/0J49) for more details.
 
 -   for the best stability, and the least conflicts with other libraries, you need cut and move the PWM pins on the shields
-    -   for use with the mega, for best results avoid using pins 4, 9, 10, 13, 44, 45, or 46 for PWM
+    -   for use with the Mega: 
+      - for best results avoid using pins 4, 9, 10, 13 for PWM
+      - Recommended to use the PWMServo library for servos to avoid timer and interupt conflicts
+        - if using the standard Servo library for servos avoid using pins 44, 45, or 46 for PWM: more information in the Notes About Timers and Conflicts
     -   information on how to move the pins is in the pololu DualVNH5019MotorShield user guide
 
 ### Software
@@ -155,6 +158,7 @@ get reliable current measurements.  If `analogWrite` uses a frequency of 490&nbs
 
 Version History
 ---------------
+-   3.2.0-dualshields (2019-11-09): adds PWM with a frequency of 7.8 kHz on timer 2 for Mega for the old pins. Thanks samascaro for the contribution.
 -   Pre-release 4.0.0-dualshields (2019-10-11): BC break changes default pins. Fixes a number of problems with PWM for the default pins on Mega. More details in the release notes.
 -   3.1.0-dualshields (2019-10-13): Fixes a number of problems with motor 4 PWM. More details in the release notes.
 -   2019-03-28 Now officially in the Arduino Library Manager
@@ -176,6 +180,8 @@ Version History
 
 ### Notes about timers and conflicts:
 -------------------
+
+It is now recommended to use the PWMServo library with this library if you also need to use servos and encoders. Use of the PWMServo library will avoid the majority of timer and interupt conflicts you would have encountered with the standard Servo library.
 
 -   Timer0 is used by the functions millis(), delay(), micros() and delayMicroseconds(),
 -   Timer1 is used by the servo.h library on Arduino Uno
