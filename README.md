@@ -22,7 +22,10 @@ This library is designed to work with the Arduino IDE versions 1.6.x or later; w
 Two Dual VNH5019 Motor Driver Shield can be purchased on [Pololu’s website](http://www.pololu.com/catalog/product/2507). See the [motor shield user’s guide](http://www.pololu.com/docs/0J49) for more details.
 
 -   for the best stability, and the least conflicts with other libraries, you need cut and move the PWM pins on the shields
-    -   for use with the mega, for best results avoid using pins 4, 9, 10, 13, 44, 45, or 46 for PWM
+    -   for use with the Mega: 
+      - for best results avoid using pins 4, 9, 10, 13 for PWM
+      - Recommended to use the PWMServo library for servos to avoid timer and interupt conflicts
+        - if using the standard Servo library for servos avoid using pins 44, 45, or 46 for PWM: more information in the Notes About Timers and Conflicts
     -   information on how to move the pins is in the pololu DualVNH5019MotorShield user guide
 
 ### Software
