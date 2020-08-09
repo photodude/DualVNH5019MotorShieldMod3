@@ -245,4 +245,4 @@ It is now recommended to use the PWMServo library with this library if you also 
     -   timer 1 —– Pins 9, 10 (servo library)
     -   timer 3 —– pin 5
     -   timer 4 —– pin 6,13
--   [You can manually implement a sudo PWM on any digital pin by repeatedly turning the pin on and off for the desired times](http://www.arduino.cc/en/Tutorial/SecretsOfArduinoPWM)
+-   [You can manually implement a pseudo PWM on any digital pin by repeatedly turning the pin on and off for the desired times](http://www.arduino.cc/en/Tutorial/SecretsOfArduinoPWM)
